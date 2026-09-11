@@ -24,8 +24,7 @@ export default function SwiftQuiz() {
 					id="answer"
 					value={answer}
 					onChange={(event) => { setAnswer(event.target.value); setChecked(false) }}
-					inputMode="numeric"
-					required
+					inputMode="numeric" 
 				/>
 				<button type="submit">Check answer</button>
 			</form>

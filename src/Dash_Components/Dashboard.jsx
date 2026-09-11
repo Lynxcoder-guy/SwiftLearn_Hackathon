@@ -8,8 +8,8 @@ export default function Dashboard() {
   const { userId } = useParams();
   const navigate = useNavigate()
 
-  const handleClick = (type) => {
-    navigate(type === "swift" ? "/swiftcontents" : "/scopecontents")
+  const handleClick = (route) => {
+    navigate(route)
   }
 
   useEffect(() => {
@@ -56,7 +56,7 @@ export default function Dashboard() {
               Analisys system to tell you which part you need to learn with an
               efficient study reviews making sure your study session counts!!.
             </p>
-            <button className="dashboard-buttons" onClick={() => {handleClick("swift")}}>Use Swift</button>
+            <button className="dashboard-buttons" onClick={() => {handleClick("/swiftcontents")}}>Use Swift</button>
           </li>
           <li>
             <h3>Scope</h3>
@@ -69,7 +69,7 @@ export default function Dashboard() {
               knowledge but also highlights areas where your understanding may
               be incomplete.
             </p>
-            <button className="dashboard-buttons" onClick={() => {handleClick("scope")}}>Use Scope</button>
+            <button className="dashboard-buttons" onClick={() => {handleClick("/scopecontents")}}>Use Scope</button>
           </li>
         </ul> 
       </div>
