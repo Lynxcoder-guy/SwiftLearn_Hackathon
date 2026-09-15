@@ -1,3 +1,5 @@
+SwfitlearnBackend/.env
+SwfitlearnBackend/python_api/.env
 # Logs
 logs
 *.log

@@ -1,49 +1,220 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { db } from "../firebase";
-import { collection, query, where, getDocs } from "firebase/firestore";
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  getDoc,
+  doc,
+  updateDoc,
+} from "firebase/firestore";
+import { ClynxCalculations } from "../JavaScript calculations/Clynx";
+import { ScoreGamify } from "../JavaScript calculations/ScoreGamify";
+
+function getScoreProgress(score) {
+  const goals = [100, 200, 400];
+  if (score >= 400) {
+    return { nextGoal: 400, progress: 100 };
+  }
+
+  const nextGoal = goals.find((goal) => score < goal) ?? 400;
+  const previousGoal = goals.findLast((goal) => score >= goal) ?? 0;
+  const progress = Math.min(
+    100,
+    Math.round(((score - previousGoal) / (nextGoal - previousGoal)) * 100),
+  );
+
+  return { nextGoal, progress };
+}
 
 export default function Dashboard() {
+  const NEED_TO_LEARN_AW = 0;
+  const NEED_TO_BLURT_AW = 2;
   const [displayName, setDisplayName] = useState("");
+  const [docId, setDocId] = useState("");
+  const [score, setScore] = useState(0);
+  const [rank, setRank] = useState("D");
+  const [clynxlist, setClynxlist] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const { userId } = useParams();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const scoreProgress = getScoreProgress(score);
 
-  const handleClick = (route) => {
-    navigate(route)
-  }
+  // Pastikan route selalu dimulai dengan slash
+  const handleClick = useCallback(
+    (route) => {
+      const normalizedRoute = route?.startsWith("/") ? route : `/${route}`;
+      navigate(`/dashboard/${userId}${normalizedRoute}`);
+    },
+    [navigate, userId]
+  );
 
   useEffect(() => {
     if (!userId) return;
 
-    const getUser = async () => {
+    let mounted = true;
+    const fetchClynxInfo = async (userDocumentId) => {
       try {
-        // addDoc() in Register creates RANDOM doc IDs, so the UID in the URL
-        // is NOT a doc ID. We must search the "userId" FIELD with getDocs.
+        const userSnapshot = await getDoc(doc(db, "Users", userDocumentId));
+        if (!mounted) return;
+
+        const userData = userSnapshot.exists() ? userSnapshot.data() : {};
+        const currentScore = Math.max(0, Number(userData.score) || 0);
+        const currentAchievement = await ScoreGamify(
+          currentScore,
+          userDocumentId,
+        );
+        if (mounted) {
+          setScore(currentScore);
+          setRank(currentAchievement.rank);
+        }
+        const needToLearn = userData.needToLearn ?? [];
+        const needToBlurt = userData.needToBlurt ?? [];
+        const savedPriorities = userData.clynxlist ?? [];
+        const factorTotals = needToLearn.reduce((totals, item) => {
+          if (!item.factor) return totals;
+
+          totals[item.factor] =
+            (totals[item.factor] ?? 0) + Number(item.underValue ?? 1);
+          return totals;
+        }, {});
+        const factorPriorities = Object.entries(factorTotals)
+          .map(([factor, underValue]) => {
+            const calculation = ClynxCalculations(
+              underValue,
+              0,
+              NEED_TO_LEARN_AW,
+            );
+
+            return {
+              type: "factor",
+              factor,
+              label: factor,
+              underValue: Math.round(underValue),
+              X: Math.round(calculation.X),
+              V: Math.round(calculation.V),
+              timeNeed: Math.max(1, Math.round(underValue * 5)),
+            };
+          });
+        const blurtPriorities = needToBlurt
+          .filter((item) => item && item.concept)
+          .map((item) => {
+            const timeNeed = Math.max(
+              1,
+              Math.min(
+                15,
+                Math.round(Number(item.neededTime ?? item.timeNeed ?? 5)),
+              ),
+            );
+            const underValue = Math.max(1, Number(item.underValue ?? 1));
+            const calculation = ClynxCalculations(
+              underValue,
+              timeNeed,
+              NEED_TO_BLURT_AW,
+            );
+
+            return {
+              type: "blurt",
+              concept: item.concept,
+              label: item.concept,
+              underValue: Math.round(underValue),
+              X: Math.round(calculation.X),
+              V: Math.round(calculation.V),
+              timeNeed,
+            };
+          });
+        const savedPriorityByKey = new Map(
+          savedPriorities.map((item) => [
+            item.checklistKey ?? `${item.type}-${item.label ?? item.factor ?? item.concept}`,
+            item,
+          ]),
+        );
+        const rankedClynxList = [...factorPriorities, ...blurtPriorities]
+          .sort((firstItem, secondItem) => secondItem.X - firstItem.X)
+          .map((item) => {
+            const checklistKey = `${item.type}-${item.label}`;
+            const savedItem = savedPriorityByKey.get(checklistKey);
+
+            return {
+              ...item,
+              checklistKey,
+              completed: savedItem?.completed === true,
+              scoreReward: Math.round(item.V / 2),
+            };
+          });
+
+        if (mounted) setClynxlist(rankedClynxList);
+
+        await updateDoc(doc(db, "Users", userDocumentId), {
+          clynxlist: rankedClynxList,
+        });
+      } catch (err) {
+        console.error("Failed to load Clynx info:", err);
+      }
+    };
+
+    const getUser = async () => {
+      setLoading(true);
+      setError(null);
+      try {
         const usersQuery = query(
           collection(db, "Users"),
-          where("userId", "==", userId),
+          where("userId", "==", userId)
         );
         const querySnapshot = await getDocs(usersQuery);
 
+        if (!mounted) return;
+
         if (!querySnapshot.empty) {
-          setDisplayName(querySnapshot.docs[0].data().userName ?? "Guest");
+          const docSnap = querySnapshot.docs[0];
+          const data = docSnap.data() ?? {};
+          setDisplayName(data.userName ?? "Guest");
+          setDocId(docSnap.id);
+          fetchClynxInfo(docSnap.id);
         } else {
-          console.warn("No profile found for userId:", userId);
+          console.log("No profile found for userId:", userId);
+          setDisplayName("Guest");
+          setDocId("");
         }
       } catch (err) {
         console.error("Failed to load user:", err);
+        setError(err);
+      } finally {
+        if (mounted) setLoading(false);
       }
     };
 
     getUser();
-  }, [navigate, userId]);
+
+    return () => {
+      mounted = false;
+    };
+  }, [userId]);
 
   return (
     <>
       <div className="dashboard-container">
-        <h1>Welcome back {displayName}</h1>
+        <h1>
+          {loading ? "Loading..." : `Welcome back ${displayName || "Guest"}`}
+          <span> | Rank {rank} | Score {score}</span>
+        </h1>
         <h3>Make your study session count today</h3>
+        <div className="score-progress" aria-label="Score progress">
+          <p>
+            Score goal: {score} / {scoreProgress.nextGoal}
+          </p>
+          <progress
+            value={scoreProgress.progress}
+            max="100"
+            aria-label={`${scoreProgress.progress}% toward next score goal`}
+          />
+        </div>
+        {error && <p className="error">Error loading profile: {error.message}</p>}
       </div>
+
       <div className="dashboard-features">
         <ul>
           <li>
@@ -51,27 +222,63 @@ export default function Dashboard() {
             <p>
               Learn our available materials with <strong>Swift</strong> for more
               interactive learning and use our mistake analisys and review
-              system for more efficient lerning process. Using small steps to
-              help you understand materials and formulas better. Mistake
-              Analisys system to tell you which part you need to learn with an
-              efficient study reviews making sure your study session counts!!.
+              system for more efficient lerning process.
             </p>
-            <button className="dashboard-buttons" onClick={() => {handleClick("/swiftcontents")}}>Use Swift</button>
+            <button
+              className="dashboard-buttons"
+              onClick={() => {
+                handleClick("/swiftcontents");
+              }}>
+              Use Swift
+            </button>
           </li>
+
           <li>
             <h3>Scope</h3>
             <p>
-              Memorize materials with our <strong>Scope</strong>’s blurting study method is designed to
-              transform the way you learn. Using the principle of{" "}
-              <em>active recall</em>, it helps you strengthen memory retention
-              by encouraging you to write down everything you know before
-              checking your notes. This process not only reinforces existing
-              knowledge but also highlights areas where your understanding may
-              be incomplete.
+              Memorize materials with our <strong>Scope</strong>’s blurting study
+              method...
             </p>
-            <button className="dashboard-buttons" onClick={() => {handleClick("/scopecontents")}}>Use Scope</button>
+            <button
+              className="dashboard-buttons"
+              onClick={() => {
+                handleClick("/scopecontents");
+              }}
+            >
+              Use Scope
+            </button>
           </li>
-        </ul> 
+        </ul>
+
+        <section className="clynx-dashboard">
+          <h3>Clynx Study Priority</h3>
+          {clynxlist.length === 0 ? (
+            <p>No study priorities yet.</p>
+          ) : (
+            <ol>
+              {clynxlist.map((priority) => (
+                <li key={priority.checklistKey}>
+                  <strong>{priority.label}</strong>
+                  <span>V: {priority.V} minutes</span>
+                  <button
+                    type="button"
+                    onClick={() => navigate(`/dashboard/${userId}/dashtimer`, {
+                      state: { priority },
+                    })}
+                  >
+                    Start study timer
+                  </button>
+                </li>
+              ))}
+            </ol>
+          )}
+        </section>
+
+        <section style={{ marginTop: 20 }}>
+          <p>
+            <strong>Firestore doc ID:</strong> {docId || "—"}
+          </p>
+        </section>
       </div>
     </>
   );

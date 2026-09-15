@@ -38,8 +38,11 @@ export default function Register() {
         userName: displayName,
         score: 0,
         achievements: [],
-        needToLearn: [],
-        completedLearning: []
+        needToBlurt: [],
+        needToLearn:[],
+        clynxData:[],
+        completedLearning: [],
+        blurtMaterials: ''
       })
 
       navigate(`/dashboard/${userId}`)
@@ -50,6 +53,7 @@ export default function Register() {
   }
 
   return (
+    <>
     <main className="hero-auth-container">
       <h1>Create your SwiftScope account</h1>
       <p>Register to save your learning progress and build better study habits.</p>
@@ -118,5 +122,6 @@ export default function Register() {
         Already have an account? <Link to="/login">Log in</Link>
       </p>
     </main>
+    </>
   )
 }

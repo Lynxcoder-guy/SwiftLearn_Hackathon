@@ -1,35 +1,190 @@
-import { useState } from "react"
-import { Link, useParams } from "react-router-dom"
-import subjects from "./SwiftSubjects.json"
+import { useEffect, useMemo, useRef, useState } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { db } from "../firebase";
+import {
+  collection,
+  doc,
+  getDocs,
+  query,
+  updateDoc,
+  arrayUnion,
+  where,
+} from "firebase/firestore";
+import quizData from "./SwiftMaterials/MathQuiz.json";
+import subjects from "./SwiftMaterials/SwiftSubjects.json";
+import {
+  findQuizSubject,
+  getQuizQuestions,
+  normalizeFactor,
+} from "./SwiftMaterials/QuizEngine";
+import { ScoreGamify } from "../JavaScript calculations/ScoreGamify";
 
-const question = {
-	prompt: "Solve for x: 2x + 4 = 10",
-	answer: "3",
+function getStruggleKey(struggle) {
+  return `${struggle.topic}-${struggle.subExerciseNumber}`;
+}
+
+function addRepetitionValues(struggles) {
+  const mergedStruggles = new Map();
+
+  struggles.forEach((struggle) => {
+    const existingStruggle = mergedStruggles.get(struggle.factor);
+
+    if (existingStruggle) {
+      existingStruggle.underValue += 1;
+      return;
+    }
+
+    mergedStruggles.set(struggle.factor, {
+      ...struggle,
+      underValue: 1,
+    });
+  });
+
+  return [...mergedStruggles.values()];
 }
 
 export default function SwiftQuiz() {
-	const { materialId } = useParams()
-	const [answer, setAnswer] = useState("")
-	const [checked, setChecked] = useState(false)
+  const { userId, materialId } = useParams();
+  const { search } = useLocation();
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [feedback, setFeedback] = useState("");
+  const [answeredWrong, setAnsweredWrong] = useState({})
+  const [score, setScore] = useState(100);
+  const [docId, setDocId] = useState(""); // ✅ useState untuk docId
+  const [, setStruggles] = useState([]);
+  const navigate = useNavigate();
+  const strugglesRef = useRef([]);
 
-	const isCorrect = answer.trim() === question.answer
+  const quizSubject = findQuizSubject(quizData, materialId, subjects);
+  const quizQuestions = useMemo(
+    () => (quizSubject ? getQuizQuestions(quizData, quizSubject) : []),
+    [quizSubject],
+  );
+  const hintValue = new URLSearchParams(search).get("hint");
+  const showHints = hintValue === "true";
 
-	return (
-		<main>
-			<h1>Swift practice: {subjects[materialId]?.title ?? "Unknown material"}</h1>
-			<p>{question.prompt}</p>
-			<form onSubmit={(event) => { event.preventDefault(); setChecked(true) }}>
-				<label htmlFor="answer">Your answer</label>
-				<input
-					id="answer"
-					value={answer}
-					onChange={(event) => { setAnswer(event.target.value); setChecked(false) }}
-					inputMode="numeric" 
-				/>
-				<button type="submit">Check answer</button>
-			</form>
-			{checked && <p role="status">{isCorrect ? "Correct" : "Try again"}</p>}
-			<Link to="/swiftcontents/quiz/review">Review session</Link>
-		</main>
-	)
+  // ✅ ambil docId sekali di awal
+  useEffect(() => {
+    const fetchDocId = async () => {
+      try {
+        const usersRef = collection(db, "Users");
+        const userQuery = query(usersRef, where("userId", "==", userId));
+        const querySnapshot = await getDocs(userQuery);
+
+        if (!querySnapshot.empty) {
+          const foundDocId = querySnapshot.docs[0].id;
+          console.log(`id collected ${foundDocId}`);
+          setDocId(foundDocId); // simpan ke state
+        } else {
+          console.warn("No profile found for userId:", userId);
+        }
+      } catch (error) {
+        console.error("Error fetching docId:", error);
+      }
+    };
+
+    fetchDocId();
+  }, [userId]);
+
+  const handleAnswer = async (option) => {
+    if (!option.isCorrect) {
+      const question = quizQuestions[currentQuestionIndex];
+      const newStruggle = {
+        factor: normalizeFactor(question.factor),
+        topic: question.topic,
+        subExerciseNumber: question.subExerciseNumber,
+        selectedAnswer: option.label,
+      };
+
+      if (
+        !strugglesRef.current.some(
+          (struggle) => getStruggleKey(struggle) === getStruggleKey(newStruggle),
+        )
+      ) {
+        setStruggles((prev) => [...prev, newStruggle]);
+        strugglesRef.current = [...strugglesRef.current, newStruggle];
+      }
+      if (!answeredWrong[currentQuestionIndex]) {
+        const nextScore = score - 20;
+        setScore((prev) => prev - 20); // kurangi score sekali saja
+        setAnsweredWrong((prev) => ({
+          ...prev,
+          [currentQuestionIndex]: true,
+        }));
+        console.log(`Current Score ${nextScore}`);
+      }
+
+      setFeedback("Not quite. Try again.");
+      return;
+    }
+
+    setFeedback("");
+    const nextQuestionIndex = currentQuestionIndex + 1;
+
+    if (nextQuestionIndex === quizQuestions.length) {
+      const strugglesWithRepetition = addRepetitionValues(strugglesRef.current);
+
+      if (docId) {
+        const updates = {};
+
+        if (strugglesWithRepetition.length > 0) {
+          updates.needToLearn = arrayUnion(...strugglesWithRepetition);
+        }
+
+        if (Object.keys(updates).length > 0) {
+          await updateDoc(doc(db, "Users", docId), updates);
+          console.log("Saved quiz results:", docId, updates);
+        }
+
+        await ScoreGamify(score, docId);
+      }
+
+      navigate(`/dashboard/${userId}/swiftcontents/${materialId}/review`, {
+        state: {
+          score,
+          total: quizQuestions.length,
+          struggles: strugglesWithRepetition,
+          hintValue,
+        },
+      });
+      return;
+    }
+
+    setCurrentQuestionIndex(nextQuestionIndex);
+  };
+
+  if (!quizQuestions.length) {
+    return (
+      <main className="quiz-hero">
+        <h1>Quiz unavailable</h1>
+        <p>This topic does not have quiz questions yet.</p>
+      </main>
+    );
+  }
+
+  const currentQuestion = quizQuestions[currentQuestionIndex];
+
+  return (
+    <main className="quiz-hero">
+      <h1>{subjects[materialId]?.title ?? materialId}</h1>
+      <p>
+        Question {currentQuestionIndex + 1} of {quizQuestions.length}
+      </p>
+      <p>Score: {score}</p>
+      <h2>{currentQuestion.question}</h2>
+      {showHints && <p>Hint: {currentQuestion.hint}</p>}
+      <div>
+        {currentQuestion.options.map((option) => (
+          <button
+            key={option.label}
+            type="button"
+            onClick={() => handleAnswer(option)}
+          >
+            {option.label}. {option.text}
+          </button>
+        ))}
+      </div>
+      {feedback && <p role="alert">{feedback}</p>}
+    </main>
+  );
 }

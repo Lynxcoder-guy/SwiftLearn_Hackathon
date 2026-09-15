@@ -2,37 +2,31 @@
 // UI AND UX DESIGNING
 //===============================
 
-☐ >> Workflows @started(26-09-10 14:47)
-    ☐ Make the Workflows for the Dash_components @started(26-09-10 14:46)
-    ☐ Finish the Workflows for the Servers etc 
-    ☐ Finish the Workflows for 
+✔ >> Workflows @started(26-09-10 14:47) @done(26-09-13 06:25) @lasted(2d15h38m49s)
+    ✔ Finish the Workflows for @done(26-09-13 06:25)
 
 ☐ >> UI Design
-    ☐ Deciding the color pallete 
+    ✔ Deciding the color pallete @done(26-09-13 06:25)
     ☐ Designing the buttons etc
 
 //===============================
 // FRONT END DEVELOPMENT
 //===============================
 ☐ >>> Main Router 
-    ✔ Create the Routers for Auth_components @done(26-09-10 14:46)
-    ✔ Create the Routers for Dash_components @done(26-09-11 17:45)
-    ✔ Create the Routers for Swift_components @done(26-09-11 17:45)
-    ✔ Create the routers for Scope_components @done(26-09-11 17:45)
     ☐ Create the routers for StudyGuide_components
 
 ☐ >>> Auth_components 
-    ☐ Create the welcome component 
-    ☐ Make the Register and Login link button on the Welcome.jsx file
-    ☐ Create the login component
-    ☐ Create the register components
-    ☐ Make sure it works and can store data on the databases
+    ✔ Create the welcome component @done(26-09-13 06:23)
+    ✔ Make the Register and Login link button on the Welcome.jsx file @done(26-09-13 06:23)
+    ✔ Create the login component @done(26-09-13 06:23)
+    ✔ Create the register components @done(26-09-13 06:23)
+    ✔ Make sure it works and can store data on the databases @done(26-09-13 06:23)
 
  >>> Dash_components
 
 ☐ >>> CSS for files
     ☐ Create the global reset and base styles in index.css
-        ☐ Set the page font, background color, text color, and box sizing
+        ✔ Set the page font, background color, text color, and box sizing @done(26-09-13 06:23)
         ☐ Style links so they inherit the application design
     ☐ Finish the CSS for Welcome.jsx
         ☐ Style .welcome-hero
@@ -62,40 +56,40 @@
 //===============================
 
 ☐ >>> Materials for swift
-    ✔ Decide math formula for the swift teached materials @done(26-09-10 16:46)
-    ☐ Work on the pseudocode algorithms
-    ☐ Make the mechanics of the problems generator 
-    ☐ Make the mechanics for the students performance analizer
-    ☐ Build the workflow concepts for the Swift quiz
+    ✔ Work on the pseudocode algorithms @done(26-09-13 06:26)
+    ✔ Make the mechanics of the problems generator @done(26-09-13 06:26)
+    ✔ Make the mechanics for the students performance analizer @done(26-09-13 06:26)
+    ✔ Build the workflow concepts for the Swift quiz @done(26-09-13 06:26)
+    ☐ Imporve the review system for swift
  
 //===============================
 // BACKEND DEVELOPMENT
 //===============================
-☐ >>> Stucturing 
-    ☐ Create the database struture with Firebase
-    ☐ Create the database on firebase 
-    ✔ Get the firebase API @done(26-09-10 14:45)
-    ☐ Finish structuring The USERS databases
+✔ >>> Stucturing @done(26-09-13 06:21)
+    ✔ Create the database struture with Firebase @done(26-09-13 06:18)
+    ✔ Create the database on firebase @done(26-09-13 06:21)
+    ✔ Finish structuring The USERS @done(26-09-13 06:21)
 
-☐ >>> Authentication 
-    ✔ Select the email as the Auth method @done(26-09-11 14:07)
-    ✔ Make the Auth Register work @done(26-09-11 14:07)
-    ✔ Make the Auth Login work @done(26-09-11 14:07)
-    ☐ Debug it and finish the Authentication part 
-
-✔ >>> USERS collection Firebase @started(26-09-10 16:13) @done(26-09-10 16:45) @lasted(32m55s)
-    ✔ > Create the USERS firebase datas @done(26-09-10 16:22)
-        ✔ Create username/displayName @done(26-09-10 16:13)
-        ✔ Create UniversalScore @done(26-09-10 16:13)
-        ✔ Create badge/achievements @started(26-09-10 16:13) @done(26-09-10 16:20) @lasted(7m16s)
-        ✔ Create the needToLearn @done(26-09-10 16:20)
-        ✔ Create the learningProgress @done(26-09-10 16:20)
+✔ >>> Authentication @done(26-09-13 06:18)
 
 
-
-
-
-
-
-
-
+Archive:
+  ✔ Make the Workflows for the Dash_components @started(26-09-10 14:46) @done(26-09-12 13:22) @lasted(1d22h36m25s)
+  ✔ Finish the Workflows for the Servers etc @done(26-09-12 13:22)
+  ✔ Create the Routers for Auth_components @done(26-09-10 14:46)
+  ✔ Create the Routers for Dash_components @done(26-09-11 17:45)
+  ✔ Create the Routers for Swift_components @done(26-09-11 17:45)
+  ✔ Create the routers for Scope_components @done(26-09-11 17:45)
+  ✔ Decide math formula for the swift teached materials @done(26-09-10 16:46)
+  ✔ Get the firebase API @done(26-09-10 14:45)
+  ✔ Select the email as the Auth method @done(26-09-11 14:07)
+  ✔ Make the Auth Register work @done(26-09-11 14:07)
+  ✔ Make the Auth Login work @done(26-09-11 14:07)
+  ✔ Debug it and finish the Authentication part @done(26-09-13 06:18)
+  ✔ >>> USERS collection Firebase @started(26-09-10 16:13) @done(26-09-10 16:45) @lasted(32m55s)
+  ✔ > Create the USERS firebase datas @done(26-09-10 16:22)
+  ✔ Create username/displayName @done(26-09-10 16:13)
+  ✔ Create UniversalScore @done(26-09-10 16:13)
+  ✔ Create badge/achievements @started(26-09-10 16:13) @done(26-09-10 16:20) @lasted(7m16s)
+  ✔ Create the needToLearn @done(26-09-10 16:20)
+  ✔ Create the learningProgress @done(26-09-10 16:20)

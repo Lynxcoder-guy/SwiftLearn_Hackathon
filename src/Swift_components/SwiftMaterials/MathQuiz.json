@@ -1,0 +1,1724 @@
+﻿{
+  "pre-algebra": {
+    "exercise1": {
+      "problem1": {
+        "level": "medium",
+        "topic": "Equations with Variables on Both Sides",
+        "sub-exercise1": {
+          "factor": "algebra_formulas",
+          "question1": "What should you do first to solve 7x + 5 = 2x - 10?",
+          "hint": "Move the variable terms to one side by subtracting 2x from both sides.",
+          "answerA": "5x + 5 = -10",
+          "answerB": "9x + 5 = -10",
+          "answerC": "7x + 5 = 9x - 10",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise2": {
+          "factor": "algebra_formulas",
+          "question2": "Simplify 5x + 5 = -10. What is the coefficient of x now?",
+          "hint": "Just subtract the coefficients: 7 - 2.",
+          "answerA": "5",
+          "answerB": "9",
+          "answerC": "-5",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise3": {
+          "factor": "algebra_formulas",
+          "question3": "Now with 5x + 5 = -10, what should you do next?",
+          "hint": "Subtract 5 from both sides to isolate the term with x.",
+          "answerA": "5x = -10 - 5",
+          "answerB": "5x = -10 + 5",
+          "answerC": "5x = -10",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise4": {
+          "factor": "addition_subtraction",
+          "question4": "Simplify 5x = -10 - 5.",
+          "hint": "Work out the subtraction on the right side.",
+          "answerA": "5x = -15",
+          "answerB": "5x = -10",
+          "answerC": "5x = 15",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise5": {
+          "factor": "multiplication_division",
+          "question5": "The final answer for x is..",
+          "hint": "Divide both sides by 5.",
+          "answerA": "-3",
+          "answerB": "3",
+          "answerC": "-2",
+          "correctAnswer": "answerA"
+        }
+      },
+      "problem2": {
+        "level": "medium",
+        "topic": "Distributive Property Equations",
+        "sub-exercise1": {
+          "factor": "multiplication_division",
+          "question1": "What is the first step to solve 2(x + 8) - 7 = -3?",
+          "hint": "Distribute 2 across (x + 8).",
+          "answerA": "2x + 16 - 7 = -3",
+          "answerB": "2x + 8 - 7 = -3",
+          "answerC": "x + 16 - 7 = -3",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise2": {
+          "factor": "addition_subtraction",
+          "question2": "Combine the constants: 16 - 7 = ?",
+          "hint": "Just add the two numbers together.",
+          "answerA": "9",
+          "answerB": "23",
+          "answerC": "-9",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise3": {
+          "factor": "algebra_formulas",
+          "question3": "Now the equation is 2x + 9 = -3. What's next?",
+          "hint": "Subtract 9 from both sides.",
+          "answerA": "2x = -3 - 9",
+          "answerB": "2x = -3 + 9",
+          "answerC": "x = -3 - 29",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise4": {
+          "factor": "addition_subtraction",
+          "question4": "Simplify 2x = -3 - 9.",
+          "hint": "Work out the subtraction.",
+          "answerA": "2x = -12",
+          "answerB": "2x = -3",
+          "answerC": "2x = 12",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise5": {
+          "factor": "multiplication_division",
+          "question5": "The final answer for x is..",
+          "hint": "Divide both sides by 2.",
+          "answerA": "-6",
+          "answerB": "6",
+          "answerC": "-4",
+          "correctAnswer": "answerA"
+        }
+      },
+      "problem3": {
+        "level": "medium",
+        "topic": "Order of Operations",
+        "sub-exercise1": {
+          "factor": "algebra_formulas",
+          "question1": "What is the first step to evaluate 4 + 2^2 * 6 - 5?",
+          "hint": "PEMDAS: exponents come before multiplication and addition.",
+          "answerA": "4 + 4 * 6 - 5",
+          "answerB": "6^2 * 6 - 5",
+          "answerC": "4 + 2 * 6 - 5",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise2": {
+          "factor": "multiplication_division",
+          "question2": "Simplify 4 * 6.",
+          "hint": "Just multiply the two numbers.",
+          "answerA": "24",
+          "answerB": "10",
+          "answerC": "30",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise3": {
+          "factor": "addition_subtraction",
+          "question3": "Now evaluate 4 + 24 - 5. What should you do first?",
+          "hint": "Work left to right: addition before subtraction here.",
+          "answerA": "28 - 5",
+          "answerB": "4 + 19",
+          "answerC": "-1 + 24",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise4": {
+          "factor": "addition_subtraction",
+          "question4": "Simplify 28 - 5.",
+          "hint": "Subtract the last number.",
+          "answerA": "23",
+          "answerB": "28",
+          "answerC": "-23",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise5": {
+          "factor": "algebra_formulas",
+          "question5": "The final answer is..",
+          "hint": "You already found it in the last step \u2014 just confirm it.",
+          "answerA": "23",
+          "answerB": "26",
+          "answerC": "19",
+          "correctAnswer": "answerA"
+        }
+      },
+      "problem4": {
+        "level": "medium",
+        "topic": "Percent Increase & Decrease",
+        "sub-exercise1": {
+          "factor": "algebra_formulas",
+          "question1": "A $40 item increases by 10%. What should you do first?",
+          "hint": "Convert 10% to a decimal and multiply by 40 to find the increase amount, or multiply 40 by (1 + 10/100).",
+          "answerA": "40 * (1 + 10/100)",
+          "answerB": "40 * 10/100",
+          "answerC": "40 + 10",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise2": {
+          "factor": "multiplication_division",
+          "question2": "Simplify 40 * (1 + 10/100).",
+          "hint": "Work out (1 + p/100) first, then multiply.",
+          "answerA": "44",
+          "answerB": "50",
+          "answerC": "4",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise3": {
+          "factor": "algebra_formulas",
+          "question3": "Now the price is $44. It then decreases by 20%. What should you do?",
+          "hint": "Multiply 44 by (1 - 20/100).",
+          "answerA": "44 * (1 - 20/100)",
+          "answerB": "44 * 20/100",
+          "answerC": "44 - 20",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise4": {
+          "factor": "multiplication_division",
+          "question4": "Simplify 44 * (1 - 20/100).",
+          "hint": "Work out (1 - p/100) first, then multiply.",
+          "answerA": "35.2",
+          "answerB": "24",
+          "answerC": "8.8",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise5": {
+          "factor": "algebra_formulas",
+          "question5": "The final price is..",
+          "hint": "That's the value from the last step, rounded to the nearest cent.",
+          "answerA": "$35.2",
+          "answerB": "$40.2",
+          "answerC": "$32.2",
+          "correctAnswer": "answerA"
+        }
+      },
+      "problem5": {
+        "level": "medium",
+        "topic": "Fraction Equations",
+        "sub-exercise1": {
+          "factor": "algebra_formulas",
+          "question1": "What should you do first to solve x/5 - 2 = -6?",
+          "hint": "Subtract -2 from both sides.",
+          "answerA": "x/5 = -6 - -2",
+          "answerB": "x/5 = -6 + (-2)",
+          "answerC": "x = -6 - -2",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise2": {
+          "factor": "addition_subtraction",
+          "question2": "Simplify -6 - -2.",
+          "hint": "Just subtract the two numbers.",
+          "answerA": "-4",
+          "answerB": "-6",
+          "answerC": "4",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise3": {
+          "factor": "multiplication_division",
+          "question3": "Now x/5 = -4. What should you do next?",
+          "hint": "Multiply both sides by 5.",
+          "answerA": "x = -4 * 5",
+          "answerB": "x = -4 / 5",
+          "answerC": "x = 5 - -4",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise4": {
+          "factor": "multiplication_division",
+          "question4": "Simplify -4 * 5.",
+          "hint": "Multiply the two numbers together.",
+          "answerA": "-20",
+          "answerB": "-15",
+          "answerC": "20",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise5": {
+          "factor": "algebra_formulas",
+          "question5": "The final answer for x is..",
+          "hint": "You already computed it in the last step.",
+          "answerA": "-20",
+          "answerB": "-25",
+          "answerC": "20",
+          "correctAnswer": "answerA"
+        }
+      }
+    },
+    "exercise2": {
+      "problem1": {
+        "level": "medium",
+        "topic": "Equations with Variables on Both Sides",
+        "sub-exercise1": {
+          "factor": "algebra_formulas",
+          "question1": "What should you do first to solve 6x + 11 = 4x - 3?",
+          "hint": "Move the variable terms to one side by subtracting 4x from both sides.",
+          "answerA": "2x + 11 = -3",
+          "answerB": "10x + 11 = -3",
+          "answerC": "6x + 11 = 10x - 3",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise2": {
+          "factor": "algebra_formulas",
+          "question2": "Simplify 2x + 11 = -3. What is the coefficient of x now?",
+          "hint": "Just subtract the coefficients: 6 - 4.",
+          "answerA": "2",
+          "answerB": "10",
+          "answerC": "-2",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise3": {
+          "factor": "algebra_formulas",
+          "question3": "Now with 2x + 11 = -3, what should you do next?",
+          "hint": "Subtract 11 from both sides to isolate the term with x.",
+          "answerA": "2x = -3 - 11",
+          "answerB": "2x = -3 + 11",
+          "answerC": "11x = -3 - 2",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise4": {
+          "factor": "addition_subtraction",
+          "question4": "Simplify 2x = -3 - 11.",
+          "hint": "Work out the subtraction on the right side.",
+          "answerA": "2x = -14",
+          "answerB": "2x = -3",
+          "answerC": "2x = 14",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise5": {
+          "factor": "multiplication_division",
+          "question5": "The final answer for x is..",
+          "hint": "Divide both sides by 2.",
+          "answerA": "-7",
+          "answerB": "7",
+          "answerC": "-6",
+          "correctAnswer": "answerA"
+        }
+      },
+      "problem2": {
+        "level": "medium",
+        "topic": "Distributive Property Equations",
+        "sub-exercise1": {
+          "factor": "multiplication_division",
+          "question1": "What is the first step to solve 4(x - 2) + 10 = -22?",
+          "hint": "Distribute 4 across (x - 2).",
+          "answerA": "4x - 8 + 10 = -22",
+          "answerB": "4x - 2 + 10 = -22",
+          "answerC": "x - 8 + 10 = -22",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise2": {
+          "factor": "addition_subtraction",
+          "question2": "Combine the constants: -8 + 10 = ?",
+          "hint": "Just add the two numbers together.",
+          "answerA": "2",
+          "answerB": "-18",
+          "answerC": "-2",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise3": {
+          "factor": "algebra_formulas",
+          "question3": "Now the equation is 4x + 2 = -22. What's next?",
+          "hint": "Subtract 2 from both sides.",
+          "answerA": "4x = -22 - 2",
+          "answerB": "4x = -22 + 2",
+          "answerC": "x = -22 - 42",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise4": {
+          "factor": "addition_subtraction",
+          "question4": "Simplify 4x = -22 - 2.",
+          "hint": "Work out the subtraction.",
+          "answerA": "4x = -24",
+          "answerB": "4x = -22",
+          "answerC": "4x = 24",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise5": {
+          "factor": "multiplication_division",
+          "question5": "The final answer for x is..",
+          "hint": "Divide both sides by 4.",
+          "answerA": "-6",
+          "answerB": "6",
+          "answerC": "-4",
+          "correctAnswer": "answerA"
+        }
+      },
+      "problem3": {
+        "level": "medium",
+        "topic": "Order of Operations",
+        "sub-exercise1": {
+          "factor": "algebra_formulas",
+          "question1": "What is the first step to evaluate 6 + 2^2 * 6 - 8?",
+          "hint": "PEMDAS: exponents come before multiplication and addition.",
+          "answerA": "6 + 4 * 6 - 8",
+          "answerB": "8^2 * 6 - 8",
+          "answerC": "6 + 2 * 6 - 8",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise2": {
+          "factor": "multiplication_division",
+          "question2": "Simplify 4 * 6.",
+          "hint": "Just multiply the two numbers.",
+          "answerA": "24",
+          "answerB": "10",
+          "answerC": "30",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise3": {
+          "factor": "addition_subtraction",
+          "question3": "Now evaluate 6 + 24 - 8. What should you do first?",
+          "hint": "Work left to right: addition before subtraction here.",
+          "answerA": "30 - 8",
+          "answerB": "6 + 16",
+          "answerC": "-2 + 24",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise4": {
+          "factor": "addition_subtraction",
+          "question4": "Simplify 30 - 8.",
+          "hint": "Subtract the last number.",
+          "answerA": "22",
+          "answerB": "30",
+          "answerC": "-22",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise5": {
+          "factor": "algebra_formulas",
+          "question5": "The final answer is..",
+          "hint": "You already found it in the last step \u2014 just confirm it.",
+          "answerA": "22",
+          "answerB": "25",
+          "answerC": "18",
+          "correctAnswer": "answerA"
+        }
+      },
+      "problem4": {
+        "level": "medium",
+        "topic": "Percent Increase & Decrease",
+        "sub-exercise1": {
+          "factor": "algebra_formulas",
+          "question1": "A $40 item increases by 20%. What should you do first?",
+          "hint": "Convert 20% to a decimal and multiply by 40 to find the increase amount, or multiply 40 by (1 + 20/100).",
+          "answerA": "40 * (1 + 20/100)",
+          "answerB": "40 * 20/100",
+          "answerC": "40 + 20",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise2": {
+          "factor": "multiplication_division",
+          "question2": "Simplify 40 * (1 + 20/100).",
+          "hint": "Work out (1 + p/100) first, then multiply.",
+          "answerA": "48",
+          "answerB": "60",
+          "answerC": "8",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise3": {
+          "factor": "algebra_formulas",
+          "question3": "Now the price is $48. It then decreases by 10%. What should you do?",
+          "hint": "Multiply 48 by (1 - 10/100).",
+          "answerA": "48 * (1 - 10/100)",
+          "answerB": "48 * 10/100",
+          "answerC": "48 - 10",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise4": {
+          "factor": "multiplication_division",
+          "question4": "Simplify 48 * (1 - 10/100).",
+          "hint": "Work out (1 - p/100) first, then multiply.",
+          "answerA": "43.2",
+          "answerB": "38",
+          "answerC": "4.8",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise5": {
+          "factor": "algebra_formulas",
+          "question5": "The final price is..",
+          "hint": "That's the value from the last step, rounded to the nearest cent.",
+          "answerA": "$43.2",
+          "answerB": "$48.2",
+          "answerC": "$40.2",
+          "correctAnswer": "answerA"
+        }
+      },
+      "problem5": {
+        "level": "medium",
+        "topic": "Fraction Equations",
+        "sub-exercise1": {
+          "factor": "algebra_formulas",
+          "question1": "What should you do first to solve x/3 + 4 = 2?",
+          "hint": "Subtract 4 from both sides.",
+          "answerA": "x/3 = 2 - 4",
+          "answerB": "x/3 = 2 + 4",
+          "answerC": "x = 2 - 4",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise2": {
+          "factor": "addition_subtraction",
+          "question2": "Simplify 2 - 4.",
+          "hint": "Just subtract the two numbers.",
+          "answerA": "-2",
+          "answerB": "2",
+          "answerC": "2",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise3": {
+          "factor": "multiplication_division",
+          "question3": "Now x/3 = -2. What should you do next?",
+          "hint": "Multiply both sides by 3.",
+          "answerA": "x = -2 * 3",
+          "answerB": "x = -2 / 3",
+          "answerC": "x = 3 - -2",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise4": {
+          "factor": "multiplication_division",
+          "question4": "Simplify -2 * 3.",
+          "hint": "Multiply the two numbers together.",
+          "answerA": "-6",
+          "answerB": "-3",
+          "answerC": "6",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise5": {
+          "factor": "algebra_formulas",
+          "question5": "The final answer for x is..",
+          "hint": "You already computed it in the last step.",
+          "answerA": "-6",
+          "answerB": "-9",
+          "answerC": "6",
+          "correctAnswer": "answerA"
+        }
+      },
+      "problem6": {
+        "level": "hard",
+        "topic": "Equations with Variables on Both Sides",
+        "sub-exercise1": {
+          "factor": "algebra_formulas",
+          "question1": "What should you do first to solve -x + 3 = 4x + 33?",
+          "hint": "Move the variable terms to one side by subtracting 4x from both sides.",
+          "answerA": "-5x + 3 = 33",
+          "answerB": "3x + 3 = 33",
+          "answerC": "-x + 3 = 3x + 33",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise2": {
+          "factor": "algebra_formulas",
+          "question2": "Simplify -5x + 3 = 33. What is the coefficient of x now?",
+          "hint": "Just subtract the coefficients: -1 - 4.",
+          "answerA": "-5",
+          "answerB": "3",
+          "answerC": "5",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise3": {
+          "factor": "algebra_formulas",
+          "question3": "Now with -5x + 3 = 33, what should you do next?",
+          "hint": "Subtract 3 from both sides to isolate the term with x.",
+          "answerA": "-5x = 33 - 3",
+          "answerB": "-5x = 33 + 3",
+          "answerC": "3x = 33 - -5",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise4": {
+          "factor": "addition_subtraction",
+          "question4": "Simplify -5x = 33 - 3.",
+          "hint": "Work out the subtraction on the right side.",
+          "answerA": "-5x = 30",
+          "answerB": "-5x = 33",
+          "answerC": "-5x = -30",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise5": {
+          "factor": "multiplication_division",
+          "question5": "The final answer for x is..",
+          "hint": "Divide both sides by -5.",
+          "answerA": "-6",
+          "answerB": "6",
+          "answerC": "-5",
+          "correctAnswer": "answerA"
+        }
+      },
+      "problem7": {
+        "level": "hard",
+        "topic": "Distributive Property Equations",
+        "sub-exercise1": {
+          "factor": "multiplication_division",
+          "question1": "What is the first step to solve 2(x - 4) - 7 = -5?",
+          "hint": "Distribute 2 across (x - 4).",
+          "answerA": "2x - 8 - 7 = -5",
+          "answerB": "2x - 4 - 7 = -5",
+          "answerC": "x - 8 - 7 = -5",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise2": {
+          "factor": "addition_subtraction",
+          "question2": "Combine the constants: -8 - 7 = ?",
+          "hint": "Just add the two numbers together.",
+          "answerA": "-15",
+          "answerB": "-1",
+          "answerC": "15",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise3": {
+          "factor": "algebra_formulas",
+          "question3": "Now the equation is 2x - 15 = -5. What's next?",
+          "hint": "Subtract -15 from both sides.",
+          "answerA": "2x = -5 - -15",
+          "answerB": "2x = -5 + (-15)",
+          "answerC": "x = -5 - 2-15",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise4": {
+          "factor": "addition_subtraction",
+          "question4": "Simplify 2x = -5 - -15.",
+          "hint": "Work out the subtraction.",
+          "answerA": "2x = 10",
+          "answerB": "2x = -5",
+          "answerC": "2x = -10",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise5": {
+          "factor": "multiplication_division",
+          "question5": "The final answer for x is..",
+          "hint": "Divide both sides by 2.",
+          "answerA": "5",
+          "answerB": "-5",
+          "answerC": "7",
+          "correctAnswer": "answerA"
+        }
+      },
+      "problem8": {
+        "level": "hard",
+        "topic": "Order of Operations",
+        "sub-exercise1": {
+          "factor": "algebra_formulas",
+          "question1": "What is the first step to evaluate 6 + 3^2 * 4 - 3?",
+          "hint": "PEMDAS: exponents come before multiplication and addition.",
+          "answerA": "6 + 9 * 4 - 3",
+          "answerB": "9^2 * 4 - 3",
+          "answerC": "6 + 6 * 4 - 3",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise2": {
+          "factor": "multiplication_division",
+          "question2": "Simplify 9 * 4.",
+          "hint": "Just multiply the two numbers.",
+          "answerA": "36",
+          "answerB": "13",
+          "answerC": "40",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise3": {
+          "factor": "addition_subtraction",
+          "question3": "Now evaluate 6 + 36 - 3. What should you do first?",
+          "hint": "Work left to right: addition before subtraction here.",
+          "answerA": "42 - 3",
+          "answerB": "6 + 33",
+          "answerC": "3 + 36",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise4": {
+          "factor": "addition_subtraction",
+          "question4": "Simplify 42 - 3.",
+          "hint": "Subtract the last number.",
+          "answerA": "39",
+          "answerB": "42",
+          "answerC": "-39",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise5": {
+          "factor": "algebra_formulas",
+          "question5": "The final answer is..",
+          "hint": "You already found it in the last step \u2014 just confirm it.",
+          "answerA": "39",
+          "answerB": "42",
+          "answerC": "35",
+          "correctAnswer": "answerA"
+        }
+      },
+      "problem9": {
+        "level": "hard",
+        "topic": "Percent Increase & Decrease",
+        "sub-exercise1": {
+          "factor": "algebra_formulas",
+          "question1": "A $120 item increases by 15%. What should you do first?",
+          "hint": "Convert 15% to a decimal and multiply by 120 to find the increase amount, or multiply 120 by (1 + 15/100).",
+          "answerA": "120 * (1 + 15/100)",
+          "answerB": "120 * 15/100",
+          "answerC": "120 + 15",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise2": {
+          "factor": "multiplication_division",
+          "question2": "Simplify 120 * (1 + 15/100).",
+          "hint": "Work out (1 + p/100) first, then multiply.",
+          "answerA": "138",
+          "answerB": "135",
+          "answerC": "18",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise3": {
+          "factor": "algebra_formulas",
+          "question3": "Now the price is $138. It then decreases by 30%. What should you do?",
+          "hint": "Multiply 138 by (1 - 30/100).",
+          "answerA": "138 * (1 - 30/100)",
+          "answerB": "138 * 30/100",
+          "answerC": "138 - 30",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise4": {
+          "factor": "multiplication_division",
+          "question4": "Simplify 138 * (1 - 30/100).",
+          "hint": "Work out (1 - p/100) first, then multiply.",
+          "answerA": "96.6",
+          "answerB": "108",
+          "answerC": "41.4",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise5": {
+          "factor": "algebra_formulas",
+          "question5": "The final price is..",
+          "hint": "That's the value from the last step, rounded to the nearest cent.",
+          "answerA": "$96.6",
+          "answerB": "$101.6",
+          "answerC": "$93.6",
+          "correctAnswer": "answerA"
+        }
+      },
+      "problem10": {
+        "level": "hard",
+        "topic": "Fraction Equations",
+        "sub-exercise1": {
+          "factor": "algebra_formulas",
+          "question1": "What should you do first to solve x/3 - 3 = 0?",
+          "hint": "Subtract -3 from both sides.",
+          "answerA": "x/3 = 0 - -3",
+          "answerB": "x/3 = 0 + (-3)",
+          "answerC": "x = 0 - -3",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise2": {
+          "factor": "addition_subtraction",
+          "question2": "Simplify 0 - -3.",
+          "hint": "Just subtract the two numbers.",
+          "answerA": "3",
+          "answerB": "0",
+          "answerC": "-3",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise3": {
+          "factor": "multiplication_division",
+          "question3": "Now x/3 = 3. What should you do next?",
+          "hint": "Multiply both sides by 3.",
+          "answerA": "x = 3 * 3",
+          "answerB": "x = 3 / 3",
+          "answerC": "x = 3 - 3",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise4": {
+          "factor": "multiplication_division",
+          "question4": "Simplify 3 * 3.",
+          "hint": "Multiply the two numbers together.",
+          "answerA": "9",
+          "answerB": "12",
+          "answerC": "-9",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise5": {
+          "factor": "algebra_formulas",
+          "question5": "The final answer for x is..",
+          "hint": "You already computed it in the last step.",
+          "answerA": "9",
+          "answerB": "6",
+          "answerC": "-9",
+          "correctAnswer": "answerA"
+        }
+      },
+      "problem11": {
+        "level": "hard",
+        "topic": "Equations with Variables on Both Sides",
+        "sub-exercise1": {
+          "factor": "algebra_formulas",
+          "question1": "What should you do first to solve 9x - 2 = 5x + 14?",
+          "hint": "Move the variable terms to one side by subtracting 5x from both sides.",
+          "answerA": "4x - 2 = 14",
+          "answerB": "14x - 2 = 14",
+          "answerC": "9x - 2 = 14x + 14",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise2": {
+          "factor": "algebra_formulas",
+          "question2": "Simplify 4x - 2 = 14. What is the coefficient of x now?",
+          "hint": "Just subtract the coefficients: 9 - 5.",
+          "answerA": "4",
+          "answerB": "14",
+          "answerC": "-4",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise3": {
+          "factor": "algebra_formulas",
+          "question3": "Now with 4x - 2 = 14, what should you do next?",
+          "hint": "Subtract -2 from both sides to isolate the term with x.",
+          "answerA": "4x = 14 - -2",
+          "answerB": "4x = 14 + (-2)",
+          "answerC": "-2x = 14 - 4",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise4": {
+          "factor": "addition_subtraction",
+          "question4": "Simplify 4x = 14 - -2.",
+          "hint": "Work out the subtraction on the right side.",
+          "answerA": "4x = 16",
+          "answerB": "4x = 14",
+          "answerC": "4x = -16",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise5": {
+          "factor": "multiplication_division",
+          "question5": "The final answer for x is..",
+          "hint": "Divide both sides by 4.",
+          "answerA": "4",
+          "answerB": "-4",
+          "answerC": "5",
+          "correctAnswer": "answerA"
+        }
+      },
+      "problem12": {
+        "level": "hard",
+        "topic": "Distributive Property Equations",
+        "sub-exercise1": {
+          "factor": "multiplication_division",
+          "question1": "What is the first step to solve 2(x + 9) + 4 = 30?",
+          "hint": "Distribute 2 across (x + 9).",
+          "answerA": "2x + 18 + 4 = 30",
+          "answerB": "2x + 9 + 4 = 30",
+          "answerC": "x + 18 + 4 = 30",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise2": {
+          "factor": "addition_subtraction",
+          "question2": "Combine the constants: 18 + 4 = ?",
+          "hint": "Just add the two numbers together.",
+          "answerA": "22",
+          "answerB": "14",
+          "answerC": "-22",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise3": {
+          "factor": "algebra_formulas",
+          "question3": "Now the equation is 2x + 22 = 30. What's next?",
+          "hint": "Subtract 22 from both sides.",
+          "answerA": "2x = 30 - 22",
+          "answerB": "2x = 30 + 22",
+          "answerC": "x = 30 - 222",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise4": {
+          "factor": "addition_subtraction",
+          "question4": "Simplify 2x = 30 - 22.",
+          "hint": "Work out the subtraction.",
+          "answerA": "2x = 8",
+          "answerB": "2x = 30",
+          "answerC": "2x = -8",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise5": {
+          "factor": "multiplication_division",
+          "question5": "The final answer for x is..",
+          "hint": "Divide both sides by 2.",
+          "answerA": "4",
+          "answerB": "-4",
+          "answerC": "6",
+          "correctAnswer": "answerA"
+        }
+      },
+      "problem13": {
+        "level": "hard",
+        "topic": "Order of Operations",
+        "sub-exercise1": {
+          "factor": "algebra_formulas",
+          "question1": "What is the first step to evaluate 4 + 4^2 * 3 - 4?",
+          "hint": "PEMDAS: exponents come before multiplication and addition.",
+          "answerA": "4 + 16 * 3 - 4",
+          "answerB": "8^2 * 3 - 4",
+          "answerC": "4 + 8 * 3 - 4",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise2": {
+          "factor": "multiplication_division",
+          "question2": "Simplify 16 * 3.",
+          "hint": "Just multiply the two numbers.",
+          "answerA": "48",
+          "answerB": "19",
+          "answerC": "51",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise3": {
+          "factor": "addition_subtraction",
+          "question3": "Now evaluate 4 + 48 - 4. What should you do first?",
+          "hint": "Work left to right: addition before subtraction here.",
+          "answerA": "52 - 4",
+          "answerB": "4 + 44",
+          "answerC": "0 + 48",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise4": {
+          "factor": "addition_subtraction",
+          "question4": "Simplify 52 - 4.",
+          "hint": "Subtract the last number.",
+          "answerA": "48",
+          "answerB": "52",
+          "answerC": "-48",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise5": {
+          "factor": "algebra_formulas",
+          "question5": "The final answer is..",
+          "hint": "You already found it in the last step \u2014 just confirm it.",
+          "answerA": "48",
+          "answerB": "51",
+          "answerC": "44",
+          "correctAnswer": "answerA"
+        }
+      },
+      "problem14": {
+        "level": "hard",
+        "topic": "Percent Increase & Decrease",
+        "sub-exercise1": {
+          "factor": "algebra_formulas",
+          "question1": "A $150 item increases by 35%. What should you do first?",
+          "hint": "Convert 35% to a decimal and multiply by 150 to find the increase amount, or multiply 150 by (1 + 35/100).",
+          "answerA": "150 * (1 + 35/100)",
+          "answerB": "150 * 35/100",
+          "answerC": "150 + 35",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise2": {
+          "factor": "multiplication_division",
+          "question2": "Simplify 150 * (1 + 35/100).",
+          "hint": "Work out (1 + p/100) first, then multiply.",
+          "answerA": "202.5",
+          "answerB": "185",
+          "answerC": "52.5",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise3": {
+          "factor": "algebra_formulas",
+          "question3": "Now the price is $202.5. It then decreases by 12%. What should you do?",
+          "hint": "Multiply 202.5 by (1 - 12/100).",
+          "answerA": "202.5 * (1 - 12/100)",
+          "answerB": "202.5 * 12/100",
+          "answerC": "202.5 - 12",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise4": {
+          "factor": "multiplication_division",
+          "question4": "Simplify 202.5 * (1 - 12/100).",
+          "hint": "Work out (1 - p/100) first, then multiply.",
+          "answerA": "178.2",
+          "answerB": "190.5",
+          "answerC": "24.3",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise5": {
+          "factor": "algebra_formulas",
+          "question5": "The final price is..",
+          "hint": "That's the value from the last step, rounded to the nearest cent.",
+          "answerA": "$178.2",
+          "answerB": "$183.2",
+          "answerC": "$175.2",
+          "correctAnswer": "answerA"
+        }
+      },
+      "problem15": {
+        "level": "hard",
+        "topic": "Fraction Equations",
+        "sub-exercise1": {
+          "factor": "algebra_formulas",
+          "question1": "What should you do first to solve x/7 + 7 = 5?",
+          "hint": "Subtract 7 from both sides.",
+          "answerA": "x/7 = 5 - 7",
+          "answerB": "x/7 = 5 + 7",
+          "answerC": "x = 5 - 7",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise2": {
+          "factor": "addition_subtraction",
+          "question2": "Simplify 5 - 7.",
+          "hint": "Just subtract the two numbers.",
+          "answerA": "-2",
+          "answerB": "5",
+          "answerC": "2",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise3": {
+          "factor": "multiplication_division",
+          "question3": "Now x/7 = -2. What should you do next?",
+          "hint": "Multiply both sides by 7.",
+          "answerA": "x = -2 * 7",
+          "answerB": "x = -2 / 7",
+          "answerC": "x = 7 - -2",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise4": {
+          "factor": "multiplication_division",
+          "question4": "Simplify -2 * 7.",
+          "hint": "Multiply the two numbers together.",
+          "answerA": "-14",
+          "answerB": "-7",
+          "answerC": "14",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise5": {
+          "factor": "algebra_formulas",
+          "question5": "The final answer for x is..",
+          "hint": "You already computed it in the last step.",
+          "answerA": "-14",
+          "answerB": "-21",
+          "answerC": "14",
+          "correctAnswer": "answerA"
+        }
+      },
+      "problem16": {
+        "level": "medium",
+        "topic": "Equations with Variables on Both Sides",
+        "sub-exercise1": {
+          "factor": "algebra_formulas",
+          "question1": "What should you do first to solve 8x - 6 = 3x + 14?",
+          "hint": "Move the variable terms to one side by subtracting 3x from both sides.",
+          "answerA": "5x - 6 = 14",
+          "answerB": "11x - 6 = 14",
+          "answerC": "8x - 6 = 11x + 14",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise2": {
+          "factor": "algebra_formulas",
+          "question2": "Simplify 5x - 6 = 14. What is the coefficient of x now?",
+          "hint": "Just subtract the coefficients: 8 - 3.",
+          "answerA": "5",
+          "answerB": "11",
+          "answerC": "-5",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise3": {
+          "factor": "algebra_formulas",
+          "question3": "Now with 5x - 6 = 14, what should you do next?",
+          "hint": "Subtract -6 from both sides to isolate the term with x.",
+          "answerA": "5x = 14 - -6",
+          "answerB": "5x = 14 + (-6)",
+          "answerC": "-6x = 14 - 5",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise4": {
+          "factor": "addition_subtraction",
+          "question4": "Simplify 5x = 14 - -6.",
+          "hint": "Work out the subtraction on the right side.",
+          "answerA": "5x = 20",
+          "answerB": "5x = 14",
+          "answerC": "5x = -20",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise5": {
+          "factor": "multiplication_division",
+          "question5": "The final answer for x is..",
+          "hint": "Divide both sides by 5.",
+          "answerA": "4",
+          "answerB": "-4",
+          "answerC": "5",
+          "correctAnswer": "answerA"
+        }
+      },
+      "problem17": {
+        "level": "medium",
+        "topic": "Distributive Property Equations",
+        "sub-exercise1": {
+          "factor": "multiplication_division",
+          "question1": "What is the first step to solve 4(x - 6) + 6 = -42?",
+          "hint": "Distribute 4 across (x - 6).",
+          "answerA": "4x - 24 + 6 = -42",
+          "answerB": "4x - 6 + 6 = -42",
+          "answerC": "x - 24 + 6 = -42",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise2": {
+          "factor": "addition_subtraction",
+          "question2": "Combine the constants: -24 + 6 = ?",
+          "hint": "Just add the two numbers together.",
+          "answerA": "-18",
+          "answerB": "-30",
+          "answerC": "18",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise3": {
+          "factor": "algebra_formulas",
+          "question3": "Now the equation is 4x - 18 = -42. What's next?",
+          "hint": "Subtract -18 from both sides.",
+          "answerA": "4x = -42 - -18",
+          "answerB": "4x = -42 + (-18)",
+          "answerC": "x = -42 - 4-18",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise4": {
+          "factor": "addition_subtraction",
+          "question4": "Simplify 4x = -42 - -18.",
+          "hint": "Work out the subtraction.",
+          "answerA": "4x = -24",
+          "answerB": "4x = -42",
+          "answerC": "4x = 24",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise5": {
+          "factor": "multiplication_division",
+          "question5": "The final answer for x is..",
+          "hint": "Divide both sides by 4.",
+          "answerA": "-6",
+          "answerB": "6",
+          "answerC": "-4",
+          "correctAnswer": "answerA"
+        }
+      },
+      "problem18": {
+        "level": "medium",
+        "topic": "Order of Operations",
+        "sub-exercise1": {
+          "factor": "algebra_formulas",
+          "question1": "What is the first step to evaluate 5 + 3^2 * 4 - 4?",
+          "hint": "PEMDAS: exponents come before multiplication and addition.",
+          "answerA": "5 + 9 * 4 - 4",
+          "answerB": "8^2 * 4 - 4",
+          "answerC": "5 + 6 * 4 - 4",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise2": {
+          "factor": "multiplication_division",
+          "question2": "Simplify 9 * 4.",
+          "hint": "Just multiply the two numbers.",
+          "answerA": "36",
+          "answerB": "13",
+          "answerC": "40",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise3": {
+          "factor": "addition_subtraction",
+          "question3": "Now evaluate 5 + 36 - 4. What should you do first?",
+          "hint": "Work left to right: addition before subtraction here.",
+          "answerA": "41 - 4",
+          "answerB": "5 + 32",
+          "answerC": "1 + 36",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise4": {
+          "factor": "addition_subtraction",
+          "question4": "Simplify 41 - 4.",
+          "hint": "Subtract the last number.",
+          "answerA": "37",
+          "answerB": "41",
+          "answerC": "-37",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise5": {
+          "factor": "algebra_formulas",
+          "question5": "The final answer is..",
+          "hint": "You already found it in the last step \u2014 just confirm it.",
+          "answerA": "37",
+          "answerB": "40",
+          "answerC": "33",
+          "correctAnswer": "answerA"
+        }
+      },
+      "problem19": {
+        "level": "medium",
+        "topic": "Percent Increase & Decrease",
+        "sub-exercise1": {
+          "factor": "algebra_formulas",
+          "question1": "A $100 item increases by 50%. What should you do first?",
+          "hint": "Convert 50% to a decimal and multiply by 100 to find the increase amount, or multiply 100 by (1 + 50/100).",
+          "answerA": "100 * (1 + 50/100)",
+          "answerB": "100 * 50/100",
+          "answerC": "100 + 50",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise2": {
+          "factor": "multiplication_division",
+          "question2": "Simplify 100 * (1 + 50/100).",
+          "hint": "Work out (1 + p/100) first, then multiply.",
+          "answerA": "150",
+          "answerB": "100",
+          "answerC": "50",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise3": {
+          "factor": "algebra_formulas",
+          "question3": "Now the price is $150. It then decreases by 10%. What should you do?",
+          "hint": "Multiply 150 by (1 - 10/100).",
+          "answerA": "150 * (1 - 10/100)",
+          "answerB": "150 * 10/100",
+          "answerC": "150 - 10",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise4": {
+          "factor": "multiplication_division",
+          "question4": "Simplify 150 * (1 - 10/100).",
+          "hint": "Work out (1 - p/100) first, then multiply.",
+          "answerA": "135",
+          "answerB": "140",
+          "answerC": "15",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise5": {
+          "factor": "algebra_formulas",
+          "question5": "The final price is..",
+          "hint": "That's the value from the last step, rounded to the nearest cent.",
+          "answerA": "$135",
+          "answerB": "$140",
+          "answerC": "$132",
+          "correctAnswer": "answerA"
+        }
+      },
+      "problem20": {
+        "level": "medium",
+        "topic": "Fraction Equations",
+        "sub-exercise1": {
+          "factor": "algebra_formulas",
+          "question1": "What should you do first to solve x/2 + 8 = 13?",
+          "hint": "Subtract 8 from both sides.",
+          "answerA": "x/2 = 13 - 8",
+          "answerB": "x/2 = 13 + 8",
+          "answerC": "x = 13 - 8",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise2": {
+          "factor": "addition_subtraction",
+          "question2": "Simplify 13 - 8.",
+          "hint": "Just subtract the two numbers.",
+          "answerA": "5",
+          "answerB": "13",
+          "answerC": "-5",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise3": {
+          "factor": "multiplication_division",
+          "question3": "Now x/2 = 5. What should you do next?",
+          "hint": "Multiply both sides by 2.",
+          "answerA": "x = 5 * 2",
+          "answerB": "x = 5 / 2",
+          "answerC": "x = 2 - 5",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise4": {
+          "factor": "multiplication_division",
+          "question4": "Simplify 5 * 2.",
+          "hint": "Multiply the two numbers together.",
+          "answerA": "10",
+          "answerB": "12",
+          "answerC": "-10",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise5": {
+          "factor": "algebra_formulas",
+          "question5": "The final answer for x is..",
+          "hint": "You already computed it in the last step.",
+          "answerA": "10",
+          "answerB": "8",
+          "answerC": "-10",
+          "correctAnswer": "answerA"
+        }
+      },
+      "problem21": {
+        "level": "hard",
+        "topic": "Equations with Variables on Both Sides",
+        "sub-exercise1": {
+          "factor": "algebra_formulas",
+          "question1": "What should you do first to solve 4x + 7 = 2x + 19?",
+          "hint": "Move the variable terms to one side by subtracting 2x from both sides.",
+          "answerA": "2x + 7 = 19",
+          "answerB": "6x + 7 = 19",
+          "answerC": "4x + 7 = 6x + 19",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise2": {
+          "factor": "algebra_formulas",
+          "question2": "Simplify 2x + 7 = 19. What is the coefficient of x now?",
+          "hint": "Just subtract the coefficients: 4 - 2.",
+          "answerA": "2",
+          "answerB": "6",
+          "answerC": "-2",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise3": {
+          "factor": "algebra_formulas",
+          "question3": "Now with 2x + 7 = 19, what should you do next?",
+          "hint": "Subtract 7 from both sides to isolate the term with x.",
+          "answerA": "2x = 19 - 7",
+          "answerB": "2x = 19 + 7",
+          "answerC": "7x = 19 - 2",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise4": {
+          "factor": "addition_subtraction",
+          "question4": "Simplify 2x = 19 - 7.",
+          "hint": "Work out the subtraction on the right side.",
+          "answerA": "2x = 12",
+          "answerB": "2x = 19",
+          "answerC": "2x = -12",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise5": {
+          "factor": "multiplication_division",
+          "question5": "The final answer for x is..",
+          "hint": "Divide both sides by 2.",
+          "answerA": "6",
+          "answerB": "-6",
+          "answerC": "7",
+          "correctAnswer": "answerA"
+        }
+      },
+      "problem22": {
+        "level": "hard",
+        "topic": "Distributive Property Equations",
+        "sub-exercise1": {
+          "factor": "multiplication_division",
+          "question1": "What is the first step to solve 2(x + 6) + 8 = 32?",
+          "hint": "Distribute 2 across (x + 6).",
+          "answerA": "2x + 12 + 8 = 32",
+          "answerB": "2x + 6 + 8 = 32",
+          "answerC": "x + 12 + 8 = 32",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise2": {
+          "factor": "addition_subtraction",
+          "question2": "Combine the constants: 12 + 8 = ?",
+          "hint": "Just add the two numbers together.",
+          "answerA": "20",
+          "answerB": "4",
+          "answerC": "-20",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise3": {
+          "factor": "algebra_formulas",
+          "question3": "Now the equation is 2x + 20 = 32. What's next?",
+          "hint": "Subtract 20 from both sides.",
+          "answerA": "2x = 32 - 20",
+          "answerB": "2x = 32 + 20",
+          "answerC": "x = 32 - 220",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise4": {
+          "factor": "addition_subtraction",
+          "question4": "Simplify 2x = 32 - 20.",
+          "hint": "Work out the subtraction.",
+          "answerA": "2x = 12",
+          "answerB": "2x = 32",
+          "answerC": "2x = -12",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise5": {
+          "factor": "multiplication_division",
+          "question5": "The final answer for x is..",
+          "hint": "Divide both sides by 2.",
+          "answerA": "6",
+          "answerB": "-6",
+          "answerC": "8",
+          "correctAnswer": "answerA"
+        }
+      },
+      "problem23": {
+        "level": "hard",
+        "topic": "Order of Operations",
+        "sub-exercise1": {
+          "factor": "algebra_formulas",
+          "question1": "What is the first step to evaluate 5 + 2^2 * 2 - 6?",
+          "hint": "PEMDAS: exponents come before multiplication and addition.",
+          "answerA": "5 + 4 * 2 - 6",
+          "answerB": "7^2 * 2 - 6",
+          "answerC": "5 + 2 * 2 - 6",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise2": {
+          "factor": "multiplication_division",
+          "question2": "Simplify 4 * 2.",
+          "hint": "Just multiply the two numbers.",
+          "answerA": "8",
+          "answerB": "6",
+          "answerC": "10",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise3": {
+          "factor": "addition_subtraction",
+          "question3": "Now evaluate 5 + 8 - 6. What should you do first?",
+          "hint": "Work left to right: addition before subtraction here.",
+          "answerA": "13 - 6",
+          "answerB": "5 + 2",
+          "answerC": "-1 + 8",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise4": {
+          "factor": "addition_subtraction",
+          "question4": "Simplify 13 - 6.",
+          "hint": "Subtract the last number.",
+          "answerA": "7",
+          "answerB": "13",
+          "answerC": "-7",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise5": {
+          "factor": "algebra_formulas",
+          "question5": "The final answer is..",
+          "hint": "You already found it in the last step \u2014 just confirm it.",
+          "answerA": "7",
+          "answerB": "10",
+          "answerC": "3",
+          "correctAnswer": "answerA"
+        }
+      },
+      "problem24": {
+        "level": "hard",
+        "topic": "Percent Increase & Decrease",
+        "sub-exercise1": {
+          "factor": "algebra_formulas",
+          "question1": "A $100 item increases by 15%. What should you do first?",
+          "hint": "Convert 15% to a decimal and multiply by 100 to find the increase amount, or multiply 100 by (1 + 15/100).",
+          "answerA": "100 * (1 + 15/100)",
+          "answerB": "100 * 15/100",
+          "answerC": "100 + 15",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise2": {
+          "factor": "multiplication_division",
+          "question2": "Simplify 100 * (1 + 15/100).",
+          "hint": "Work out (1 + p/100) first, then multiply.",
+          "answerA": "115",
+          "answerB": "100",
+          "answerC": "15",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise3": {
+          "factor": "algebra_formulas",
+          "question3": "Now the price is $115. It then decreases by 12%. What should you do?",
+          "hint": "Multiply 115 by (1 - 12/100).",
+          "answerA": "115 * (1 - 12/100)",
+          "answerB": "115 * 12/100",
+          "answerC": "115 - 12",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise4": {
+          "factor": "multiplication_division",
+          "question4": "Simplify 115 * (1 - 12/100).",
+          "hint": "Work out (1 - p/100) first, then multiply.",
+          "answerA": "101.2",
+          "answerB": "103",
+          "answerC": "13.8",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise5": {
+          "factor": "algebra_formulas",
+          "question5": "The final price is..",
+          "hint": "That's the value from the last step, rounded to the nearest cent.",
+          "answerA": "$101.2",
+          "answerB": "$106.2",
+          "answerC": "$98.2",
+          "correctAnswer": "answerA"
+        }
+      },
+      "problem25": {
+        "level": "hard",
+        "topic": "Fraction Equations",
+        "sub-exercise1": {
+          "factor": "algebra_formulas",
+          "question1": "What should you do first to solve x/5 + 9 = 13?",
+          "hint": "Subtract 9 from both sides.",
+          "answerA": "x/5 = 13 - 9",
+          "answerB": "x/5 = 13 + 9",
+          "answerC": "x = 13 - 9",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise2": {
+          "factor": "addition_subtraction",
+          "question2": "Simplify 13 - 9.",
+          "hint": "Just subtract the two numbers.",
+          "answerA": "4",
+          "answerB": "13",
+          "answerC": "-4",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise3": {
+          "factor": "multiplication_division",
+          "question3": "Now x/5 = 4. What should you do next?",
+          "hint": "Multiply both sides by 5.",
+          "answerA": "x = 4 * 5",
+          "answerB": "x = 4 / 5",
+          "answerC": "x = 5 - 4",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise4": {
+          "factor": "multiplication_division",
+          "question4": "Simplify 4 * 5.",
+          "hint": "Multiply the two numbers together.",
+          "answerA": "20",
+          "answerB": "25",
+          "answerC": "-20",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise5": {
+          "factor": "algebra_formulas",
+          "question5": "The final answer for x is..",
+          "hint": "You already computed it in the last step.",
+          "answerA": "20",
+          "answerB": "15",
+          "answerC": "-20",
+          "correctAnswer": "answerA"
+        }
+      },
+      "problem26": {
+        "level": "hard",
+        "topic": "Equations with Variables on Both Sides",
+        "sub-exercise1": {
+          "factor": "algebra_formulas",
+          "question1": "What should you do first to solve 5x + 7 = 3x + 21?",
+          "hint": "Move the variable terms to one side by subtracting 3x from both sides.",
+          "answerA": "2x + 7 = 21",
+          "answerB": "8x + 7 = 21",
+          "answerC": "5x + 7 = 8x + 21",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise2": {
+          "factor": "algebra_formulas",
+          "question2": "Simplify 2x + 7 = 21. What is the coefficient of x now?",
+          "hint": "Just subtract the coefficients: 5 - 3.",
+          "answerA": "2",
+          "answerB": "8",
+          "answerC": "-2",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise3": {
+          "factor": "algebra_formulas",
+          "question3": "Now with 2x + 7 = 21, what should you do next?",
+          "hint": "Subtract 7 from both sides to isolate the term with x.",
+          "answerA": "2x = 21 - 7",
+          "answerB": "2x = 21 + 7",
+          "answerC": "7x = 21 - 2",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise4": {
+          "factor": "addition_subtraction",
+          "question4": "Simplify 2x = 21 - 7.",
+          "hint": "Work out the subtraction on the right side.",
+          "answerA": "2x = 14",
+          "answerB": "2x = 21",
+          "answerC": "2x = -14",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise5": {
+          "factor": "multiplication_division",
+          "question5": "The final answer for x is..",
+          "hint": "Divide both sides by 2.",
+          "answerA": "7",
+          "answerB": "-7",
+          "answerC": "8",
+          "correctAnswer": "answerA"
+        }
+      },
+      "problem27": {
+        "level": "hard",
+        "topic": "Distributive Property Equations",
+        "sub-exercise1": {
+          "factor": "multiplication_division",
+          "question1": "What is the first step to solve 3(x + 2) - 10 = 20?",
+          "hint": "Distribute 3 across (x + 2).",
+          "answerA": "3x + 6 - 10 = 20",
+          "answerB": "3x + 2 - 10 = 20",
+          "answerC": "x + 6 - 10 = 20",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise2": {
+          "factor": "addition_subtraction",
+          "question2": "Combine the constants: 6 - 10 = ?",
+          "hint": "Just add the two numbers together.",
+          "answerA": "-4",
+          "answerB": "16",
+          "answerC": "4",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise3": {
+          "factor": "algebra_formulas",
+          "question3": "Now the equation is 3x - 4 = 20. What's next?",
+          "hint": "Subtract -4 from both sides.",
+          "answerA": "3x = 20 - -4",
+          "answerB": "3x = 20 + (-4)",
+          "answerC": "x = 20 - 3-4",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise4": {
+          "factor": "addition_subtraction",
+          "question4": "Simplify 3x = 20 - -4.",
+          "hint": "Work out the subtraction.",
+          "answerA": "3x = 24",
+          "answerB": "3x = 20",
+          "answerC": "3x = -24",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise5": {
+          "factor": "multiplication_division",
+          "question5": "The final answer for x is..",
+          "hint": "Divide both sides by 3.",
+          "answerA": "8",
+          "answerB": "-8",
+          "answerC": "10",
+          "correctAnswer": "answerA"
+        }
+      },
+      "problem28": {
+        "level": "hard",
+        "topic": "Order of Operations",
+        "sub-exercise1": {
+          "factor": "algebra_formulas",
+          "question1": "What is the first step to evaluate 5 + 4^2 * 3 - 3?",
+          "hint": "PEMDAS: exponents come before multiplication and addition.",
+          "answerA": "5 + 16 * 3 - 3",
+          "answerB": "9^2 * 3 - 3",
+          "answerC": "5 + 8 * 3 - 3",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise2": {
+          "factor": "multiplication_division",
+          "question2": "Simplify 16 * 3.",
+          "hint": "Just multiply the two numbers.",
+          "answerA": "48",
+          "answerB": "19",
+          "answerC": "51",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise3": {
+          "factor": "addition_subtraction",
+          "question3": "Now evaluate 5 + 48 - 3. What should you do first?",
+          "hint": "Work left to right: addition before subtraction here.",
+          "answerA": "53 - 3",
+          "answerB": "5 + 45",
+          "answerC": "2 + 48",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise4": {
+          "factor": "addition_subtraction",
+          "question4": "Simplify 53 - 3.",
+          "hint": "Subtract the last number.",
+          "answerA": "50",
+          "answerB": "53",
+          "answerC": "-50",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise5": {
+          "factor": "algebra_formulas",
+          "question5": "The final answer is..",
+          "hint": "You already found it in the last step \u2014 just confirm it.",
+          "answerA": "50",
+          "answerB": "53",
+          "answerC": "46",
+          "correctAnswer": "answerA"
+        }
+      },
+      "problem29": {
+        "level": "hard",
+        "topic": "Percent Increase & Decrease",
+        "sub-exercise1": {
+          "factor": "algebra_formulas",
+          "question1": "A $100 item increases by 15%. What should you do first?",
+          "hint": "Convert 15% to a decimal and multiply by 100 to find the increase amount, or multiply 100 by (1 + 15/100).",
+          "answerA": "100 * (1 + 15/100)",
+          "answerB": "100 * 15/100",
+          "answerC": "100 + 15",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise2": {
+          "factor": "multiplication_division",
+          "question2": "Simplify 100 * (1 + 15/100).",
+          "hint": "Work out (1 + p/100) first, then multiply.",
+          "answerA": "115",
+          "answerB": "100",
+          "answerC": "15",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise3": {
+          "factor": "algebra_formulas",
+          "question3": "Now the price is $115. It then decreases by 12%. What should you do?",
+          "hint": "Multiply 115 by (1 - 12/100).",
+          "answerA": "115 * (1 - 12/100)",
+          "answerB": "115 * 12/100",
+          "answerC": "115 - 12",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise4": {
+          "factor": "multiplication_division",
+          "question4": "Simplify 115 * (1 - 12/100).",
+          "hint": "Work out (1 - p/100) first, then multiply.",
+          "answerA": "101.2",
+          "answerB": "103",
+          "answerC": "13.8",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise5": {
+          "factor": "algebra_formulas",
+          "question5": "The final price is..",
+          "hint": "That's the value from the last step, rounded to the nearest cent.",
+          "answerA": "$101.2",
+          "answerB": "$106.2",
+          "answerC": "$98.2",
+          "correctAnswer": "answerA"
+        }
+      },
+      "problem30": {
+        "level": "hard",
+        "topic": "Fraction Equations",
+        "sub-exercise1": {
+          "factor": "algebra_formulas",
+          "question1": "What should you do first to solve x/5 - 2 = -5?",
+          "hint": "Subtract -2 from both sides.",
+          "answerA": "x/5 = -5 - -2",
+          "answerB": "x/5 = -5 + (-2)",
+          "answerC": "x = -5 - -2",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise2": {
+          "factor": "addition_subtraction",
+          "question2": "Simplify -5 - -2.",
+          "hint": "Just subtract the two numbers.",
+          "answerA": "-3",
+          "answerB": "-5",
+          "answerC": "3",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise3": {
+          "factor": "multiplication_division",
+          "question3": "Now x/5 = -3. What should you do next?",
+          "hint": "Multiply both sides by 5.",
+          "answerA": "x = -3 * 5",
+          "answerB": "x = -3 / 5",
+          "answerC": "x = 5 - -3",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise4": {
+          "factor": "multiplication_division",
+          "question4": "Simplify -3 * 5.",
+          "hint": "Multiply the two numbers together.",
+          "answerA": "-15",
+          "answerB": "-10",
+          "answerC": "15",
+          "correctAnswer": "answerA"
+        },
+        "sub-exercise5": {
+          "factor": "algebra_formulas",
+          "question5": "The final answer for x is..",
+          "hint": "You already computed it in the last step.",
+          "answerA": "-15",
+          "answerB": "-20",
+          "answerC": "15",
+          "correctAnswer": "answerA"
+        }
+      }
+    }
+  }
+}
+

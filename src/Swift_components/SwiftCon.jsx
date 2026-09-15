@@ -1,12 +1,14 @@
-import subjects from './SwiftSubjects.json'
-import { useNavigate } from 'react-router-dom'
+import subjects from './SwiftMaterials/SwiftSubjects.json';
+import { useNavigate, useParams } from 'react-router-dom';
 
 export default function SwiftContents() {
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const { userId } = useParams();
   const handleClick = (materialId) => {
-    navigate(`/swiftcontents/${materialId}`)
-  }
+    const hintValue = subjects[materialId]['with-hint?'];
+    navigate(`/dashboard/${userId}/swiftcontents/${materialId}?hint=${hintValue}`)
+  };
 
   return (
     <>

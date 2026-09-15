@@ -1,56 +1,61 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-//Authetication components Route
+import {
+  BrowserRouter as Router,
+  Navigate,
+  Route,
+  Routes,
+} from "react-router-dom";
 import Welcome from "./Auth_Components/Welcome";
 import Login from "./Auth_Components/Login";
 import Register from "./Auth_Components/Register";
-
-//Dashboard components Route
-import DashBoard from "./Dash_Components/Dashboard";
-
-//Scope system components Route
+import Dashboard from "./Dash_Components/Dashboard";
+import DashTimer from "./Dash_Components/DashTimer";
 import BlurtContent from "./Scope_components/BlurtCon";
 import BlurtTimer from "./Scope_components/Timer";
+import BlurtRewrite from "./Scope_components/RewriteBlurt";
 import BlurtReview from "./Scope_components/ReviewBlurt";
-
-//Swift system components Route
-import SwiftContentOption from "./Swift_components/SwiftCon";
-import SwiftTutorial from "./Swift_components/SwiftQuiz";
+import SwiftContents from "./Swift_components/SwiftCon";
+import SwiftQuiz from "./Swift_components/SwiftQuiz";
 import SwiftReview from "./Swift_components/ReviewSwift";
 
-function App() {
+export default function App() {
   return (
-    <>
-      <Router>
-        <Routes>
-          {/*Routers for Auth components*/}
-          <Route path="/" element={<Welcome />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+    <Router>
+      <Routes>
+        <Route path="/" element={<Welcome />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
 
-          {/*Routers for Dashboard_components*/}
-          <Route path="/dashboard/:userId" element={<DashBoard />} />
+        <Route path="/dashboard/:userId" element={<Dashboard />} />
+        <Route path="/dashboard/:userId/dashtimer" element={<DashTimer />} />
 
-          {/*Routers for Swift_components*/}
-          <Route path="/swiftcontents" element={<SwiftContentOption />} />
-          <Route
-            path="/swiftcontents/:materialId"
-            element={<SwiftTutorial />}
-          />
-          <Route
-            path="/swiftcontents/:materialId/:reviewId"
-            element={<SwiftReview />}
-          />
-          {/*After finishing the study materials*/}
-
-          {/*Routers for Scope_components*/}
-          <Route path="/scopecontents" element={<BlurtContent />} />
-          <Route path="/scopecontents/timer" element={<BlurtTimer />} />
-          <Route path="/scopecontents/timer/review" element={<BlurtReview />} />
-        </Routes>
-      </Router>
-    </>
+        <Route  path="/dashboard/:userId/swiftcontents" element={<SwiftContents />}/>
+        
+        <Route
+          path="/dashboard/:userId/swiftcontents/:materialId"
+          element={<SwiftQuiz />}
+        />
+        <Route
+          path="/dashboard/:userId/swiftcontents/:materialId/review"
+          element={<SwiftReview />}
+        />
+        <Route
+          path="/dashboard/:userId/scopecontents"
+          element={<BlurtContent />}
+        />
+        <Route
+          path="/dashboard/:userId/scopecontents/timer"
+          element={<BlurtTimer />}
+        />
+        <Route
+          path="/dashboard/:userId/scopecontents/timer/rewrite"
+          element={<BlurtRewrite />}
+        />
+        <Route
+          path="/dashboard/:userId/scopecontents/timer/rewrite/review"
+          element={<BlurtReview />}
+        />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </Router>
   );
 }
-
-export default App;

@@ -1,12 +1,15 @@
 {
-    "pre-algebra-whint": {
+        "pre-algebra-whint": {
         "title": "Pre-Algebra with hint",
         "description": "Start learning the fundemnetals of variables, integers, and equations with hint to help you land some understanding of the material.",
-        "material-id" : "prealgebrawhint"
+        "material-id" : "prealgebrawhint",
+        "with-hint?" : "true"
     },
         "pre-algebra-normal": {
         "title": "Pre-Algebra normal",
         "description": "Master the fundamentals of variables, integers, and equations to build a rock-solid foundation for advanced high school math.",
-        "material-id" : "prealgebranohint"
+        "material-id" : "prealgebranohint",
+        "with-hint?" : "false"
+        
     }
 }

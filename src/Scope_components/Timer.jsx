@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 
 export default function BlurtTimer() {
+    const { userId } = useParams()
     const [seconds, setSeconds] = useState(300)
 
     useEffect(() => {
@@ -19,7 +20,7 @@ export default function BlurtTimer() {
         <main>
             <h1>Blurting session</h1>
             <p>{minutes}:{remainingSeconds}</p>
-            <Link to="/scopecontents/timer/review">Review your blurting</Link>
+            <Link to={`/dashboard/${userId}/scopecontents/timer/rewrite`}>Rewrite what you remember</Link>
         </main>
     )
 }
