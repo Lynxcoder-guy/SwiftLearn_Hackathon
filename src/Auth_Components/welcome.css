@@ -7,6 +7,7 @@
   color: #2d211c;
   display: flex;
   gap: clamp(2rem, 7vw, 7rem);
+  flex-direction: row;
   justify-content: center;
   min-height: 100vh;
   overflow: hidden;
