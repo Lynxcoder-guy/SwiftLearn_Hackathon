@@ -1,22 +1,26 @@
 import { Link } from "react-router-dom";
+import "./welcome.css";
 
+// Present the product's three learning ideas before the learner authenticates:
+// Swift for practice, Scope for recall, and Clynx for prioritization.
 export default function Welcome() {
   return (
-    <>
-     <div className="welcome-hero">
+    <div className="screen-shell welcome-screen">
+      <div className="welcome-hero">
         <h1>
-          Welcome to <strong>SwiftScope</strong>
+          Welcome to <strong>SwiftLearn</strong>
         </h1>
-        <h3>Learn Swiftly. Review Effectively.</h3>
+        <p className="welcome-kicker">A clearer way to build lasting understanding</p>
         <p>
-          Spend less time learning by learning effieciently with
-          <strong>SwiftScope</strong> a learning tool to help you learn
-          materials faster as efficient as possible with Active learning With
-          Swift, and Active Recall With Scope.
+          SwiftLearn helps you turn study time into real progress. Learn new
+          material with <strong>Swift</strong>, then strengthen your memory with
+          active recall through <strong>Scope</strong>, and analyze your study priority
+          based on your understanding with <strong>Clynx</strong>.
         </p>
       </div>
       <div className="get-started">
-        <h3>Start Your Progress today!!</h3>
+        <p className="section-label">Your next step</p>
+        <h2>Start studying efficiently with our program today!!</h2>
         <ul className="get-started-buttons">
           <li>
             <Link to="/register"><button>Register</button></Link>
@@ -26,6 +30,6 @@ export default function Welcome() {
           </li>
         </ul>
       </div>
-    </>
+    </div>
   )
 }

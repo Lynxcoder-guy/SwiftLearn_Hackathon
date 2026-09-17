@@ -1,0 +1,425 @@
+/*
+==========================
+    DASHBOARD PAGE
+  Connected files:
+  - src/Dash_Components/Dashboard.jsx
+  - src/Dash_Components/DashTimer.jsx
+==========================
+*/
+
+/*Root For the colors*/
+:root {
+  --color-background: #fff4e8;
+  --color-background-light: #fff1df;
+  --color-background-orange: #ffb36e;
+  --color-background-deep: #ef7045;
+  --color-surface: #ffffff;
+  --color-border: #e7d8c7;
+  --light-orange: #ff9f60;
+  --lighter-orange: #ffcba9;
+  --color-primary: #d95738;
+  --color-primary-dark: #a83d2a;
+  --color-text: #2d211c;
+  --carbon-black: #232323;
+  --color-muted: #735f55;
+  --color-on-primary: #ffffff;
+  --color-error: #a83232;
+  --font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+
+  /* Shared content width — the welcome card and the feature cards below it both
+     use this, so their left/right edges always line up (symmetry). */
+  --dash-content-width: min(94%, 1400px);
+}
+
+/* Keep the dashboard background scoped so Login and Register retain App.css. */
+.dashboard-page {
+  align-items: center;
+  background: linear-gradient(
+    165deg,
+    var(--lighter-orange),
+    var(--color-background-light),
+    var(--color-surface),
+    var(--lighter-orange)
+  );
+  background-attachment: fixed;
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 3rem 0;
+}
+
+.dashboard-page h1 {
+  color: var(--color-text);
+}
+
+.dashboard-page h1 span {
+  color: var(--color-primary-dark);
+}
+
+.dashboard-page h3 {
+  color: var(--color-muted);
+}
+
+.dashboard-container,
+.dashboard-features {
+  margin-inline: auto;
+  width: var(--dash-content-width);
+}
+
+.dashboard-container {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 22px;
+  box-shadow: 0 12px 30px rgba(91, 54, 35, 0.12);
+  margin-top: 0;
+  padding: clamp(1.5rem, 4rem, 3rem);
+}
+
+.dashboard-container h3 {
+  color: var(--color-muted);
+  margin: 0;
+}
+
+.score-progress {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(217, 87, 56, 0.16);
+  border-radius: 12px;
+  margin-top: 1.5rem;
+  padding: 0.9rem 1rem;
+}
+
+.score-progress p {
+  margin: 0.25rem 0;
+}
+
+.score-progress progress {
+  accent-color: var(--color-primary);
+  height: 1rem;
+  width: 100%;
+}
+
+.dashboard-features {
+  padding: 1.5rem 0 3rem;
+}
+
+/* Columns fit however many feature cards exist: the 2 cards (Swift + Scope)
+   split the whole page between them, and any extra cards simply add columns
+   instead of leaving an empty half-row. */
+.dashboard-features > ul {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+}
+
+.dashboard-features > ul > li {
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.96), var(--color-background-light)),
+    #fff;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+  padding: 1.35rem;
+}
+
+.dashboard-features > ul > li p {
+  color: var(--color-muted);
+}
+
+.dashboard-features > ul > li h3 {
+  color: var(--color-text);
+}
+
+/* ==========================
+   BUTTONS ANIMATION
+========================== */
+button,
+.dashboard-buttons,
+.clynx-dashboard button,
+.dash-timer button {
+  background: linear-gradient(135deg, var(--color-primary), #ef8a45);
+  border: 0;
+  border-radius: 9px;
+  color: var(--color-on-primary);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  padding: 0.8rem 1.3rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+button:hover,
+.dashboard-buttons:hover,
+.clynx-dashboard button:hover,
+.dash-timer button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+button:active,
+.dashboard-buttons:active,
+.clynx-dashboard button:active,
+.dash-timer button:active {
+  transform: scale(0.95);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.clynx-dashboard {
+  background:
+    linear-gradient(125deg, var(--color-background-orange), var(--color-background-deep), var(--color-background-orange)),
+    #fff;
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.25);
+  padding: 1.5rem;
+}
+
+.clynx-dashboard h3 {
+  color: var(--color-on-primary);
+  padding-left: 0.5rem;
+}
+
+.clynx-dashboard ol {
+  display: grid;
+  gap: 0.75rem;
+  padding-left: 0.5rem;
+}
+
+.clynx-dashboard li {
+  align-items: center;
+  background: var(--color-on-primary);
+  border: 1px solid rgba(231, 216, 199, 0.9);
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: space-between;
+  padding: 0.8rem;
+}
+
+/* ==========================
+   DIGITAL STUDY TIMER
+========================== */
+.dashboard-page-timer{
+  align-items: center;
+  background:linear-gradient(
+    to top,
+    var(--color-background-deep) 0%,
+    var(--color-background-orange) 52%,
+    var(--light-orange) 100%
+  );
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem 0;
+}
+.dash-timer {
+  align-items: center;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(255, 210, 179, 0.9)),
+    linear-gradient(35deg, #f3a76d, #fff8ed);
+  border: 1px solid rgba(217, 87, 56, 0.22);
+  border-radius: 24px;
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin: 0 auto;
+  max-width: 720px;
+  padding: clamp(2rem, 7vw, 5rem);
+  text-align: center;
+  width: min(92%, 720px);
+}
+
+.dash-timer h1 {
+  margin: 0;
+  color: var(--color-text);
+  text-shadow: none;
+}
+
+.dash-timer h3 {
+  background: #2d211c;
+  border: 8px solid rgba(255, 255, 255, 0.65);
+  border-radius: 16px;
+  box-shadow: inset 0 0 24px rgba(255, 159, 96, 0.18), 0 12px 25px rgba(45, 33, 28, 0.18);
+  color: #ffb36e;
+  font-family: "Courier New", monospace;
+  font-size: clamp(3.5rem, 13vw, 8rem);
+  letter-spacing: 0.08em;
+  line-height: 1;
+  margin: 0;
+  min-width: min(100%, 560px);
+  padding: 1.2rem 1rem;
+  text-shadow: 0 0 12px rgba(255, 159, 96, 0.75);
+}
+
+.dash-timer p {
+  color: var(--color-muted);
+}
+
+.dash-timer > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+@media (max-width: 620px) {
+  .dashboard-page {
+    padding: 1.5rem 0;
+  }
+
+  .dashboard-container,
+  .dashboard-features {
+    width: min(94%, 520px);
+  }
+
+  .dashboard-container {
+    border-radius: 16px;
+    margin-top: 0;
+    padding: 1.25rem 1rem;
+  }
+
+  .dashboard-container h1 {
+    font-size: clamp(1.45rem, 7vw, 2rem);
+    line-height: 1.2;
+  }
+
+  .dashboard-container h1 span {
+    display: block;
+    font-size: 0.78em;
+    margin-top: 0.45rem;
+  }
+
+  .dashboard-features > ul {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-features {
+    padding-top: 1rem;
+  }
+
+  .dashboard-features > ul > li,
+  .clynx-dashboard {
+    border-radius: 14px;
+    padding: 1rem;
+  }
+
+  .clynx-dashboard li {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .clynx-dashboard li button {
+    width: 100%;
+  }
+
+  .dash-timer {
+    border-radius: 16px;
+    margin: 1.5rem auto;
+    padding: 1.5rem 1rem;
+    width: min(94%, 520px);
+  }
+
+  .dash-timer h1 {
+    font-size: clamp(1.35rem, 7vw, 2rem);
+    overflow-wrap: anywhere;
+  }
+
+  .dash-timer h3 {
+    border-width: 5px;
+    font-size: clamp(2.8rem, 17vw, 5rem);
+    min-width: 0;
+    padding: 1rem 0.5rem;
+    width: 100%;
+  }
+
+  .dash-timer > div {
+    width: 100%;
+  }
+
+  .dash-timer > div button {
+    flex: 1 1 100%;
+  }
+}
+/* ==========================
+   DASHBOARD ENTRANCE
+   Connected files:
+   - src/Dash_Components/Dashboard.jsx
+   - src/Dash_Components/DashTimer.jsx
+========================= */
+
+/* The score card leads, the feature cards follow, then the Clynx checklist. */
+.dashboard-container {
+  animation: page-rise-enter 520ms 40ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.dashboard-features > ul > li {
+  animation: page-rise-enter 460ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.dashboard-features > ul > li:nth-child(1) {
+  animation-delay: 140ms;
+}
+
+.dashboard-features > ul > li:nth-child(2) {
+  animation-delay: 200ms;
+}
+
+.dashboard-features > ul > li:nth-child(n + 3) {
+  animation-delay: 260ms;
+}
+
+.clynx-dashboard {
+  animation: page-rise-enter 480ms 220ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Rows arrive as the priorities load, so a long checklist keeps its rhythm
+   without every item waiting on the one above it. */
+.clynx-dashboard li {
+  animation: page-rise-enter 380ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.clynx-dashboard li:nth-child(1) {
+  animation-delay: 280ms;
+}
+
+.clynx-dashboard li:nth-child(2) {
+  animation-delay: 330ms;
+}
+
+.clynx-dashboard li:nth-child(3) {
+  animation-delay: 380ms;
+}
+
+.clynx-dashboard li:nth-child(4) {
+  animation-delay: 430ms;
+}
+
+.clynx-dashboard li:nth-child(n + 5) {
+  animation-delay: 480ms;
+}
+
+.dash-timer {
+  animation: page-rise-enter 520ms 40ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Time is up: the digits pulse in step with the alarm (shared keyframes). */
+.dash-timer h3.is-finished {
+  animation: timer-finished-pulse 1s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-container,
+  .dashboard-features > ul > li,
+  .clynx-dashboard,
+  .clynx-dashboard li,
+  .dash-timer,
+  .dash-timer h3.is-finished {
+    animation: none;
+  }
+}

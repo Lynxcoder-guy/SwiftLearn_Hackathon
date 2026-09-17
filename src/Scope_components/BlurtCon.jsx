@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { db } from '../firebase';
 import { collection, getDocs, query, setDoc, where } from "firebase/firestore";
+import "./Scope.css";
 
 
 export default function BlurtContent() {
@@ -10,11 +11,15 @@ export default function BlurtContent() {
   const { userId } = useParams();
 
   const handleChange = (e) => {
+    // Keep the learner's source material local until they explicitly begin
+    // the session, avoiding partial drafts being written to Firestore.
     setBlurtMaterials(e.target.value)
   }
 
-    const handleClick = async () => {
+  const handleClick = async () => {
     try {
+      // Scope stores the source notes before starting the timed recall session
+      // so the later rewrite and accuracy screens can load the same material.
       const usersQuery = query(
         collection(db, "Users"),
         where("userId", "==", userId),
@@ -33,32 +38,29 @@ export default function BlurtContent() {
       console.error("Error saving document:", err);
     }
   };
-  
+
   return (
-    <>
-    <main className="blurt-con-hero">
-      <h1>Scope Active Recall</h1>
-      <p>
-        Using active recall to make your study session as efficient as possible
-        with the Scope learning system, you gain the ability to focus on
-        mistakes, refine your knowledge, and transform every study session into
-        a powerful step toward mastery.
-      </p>
-    </main>
-    <section className="blurt-input">
+    <div className="scope-page">
+      <main className="blurt-con-hero">
+        <h1>Scope Active Recall</h1>
+        <h3>Memorize Efficiently With Scope</h3>
+      </main>
+      <section className="blurt-input">
         <textarea
           className="blurt-material-input"
           name="blurt-material-input"
           value={blurtMaterials}
           onChange={handleChange}
-          placeholder={'Chapter 1\nWrite your notes here...\n\n--- CHAPTER BREAK ---\n\nChapter 2\nContinue your notes here...'}
+          placeholder={'Highly recomended to put a single pararaph text for better acuracy'}
           rows="14"
           aria-label="Study notes"
         />
-        <button className="blurt-material-start" onClick={handleClick}>
-          Start Now
-        </button>
-    </section>
-    </>
+        <section className="start-now-blurt">
+          <button className="blurt-material-start" onClick={handleClick}>
+            Start Now
+          </button>
+        </section>
+      </section>
+    </div>
   );
 }

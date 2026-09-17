@@ -1,4 +1,4 @@
-/*
+﻿/*
 ==========================
 	ROOT for css
 ==========================
@@ -28,20 +28,67 @@
   box-sizing: border-box;
 }
 
-html,
 body {
-	min-height: 100%;
-	margin: 0;
+  margin: 0;
+  background: linear-gradient(135deg, var(--color-background-light), var(--color-background-orange), var(--color-background-light));
+  color: var(--color-text);
+  font-family: var(--font-family);
+}
+
+button,
+input,
+textarea,
+select {
+  max-width: 100%;
+}
+
+@media (max-width: 600px) {
+  body {
+    font-size: 0.95rem;
+    overflow-x: hidden;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font-size: 1rem;
+  }
+
+  button,
+  input,
+  select {
+    min-height: 2.75rem;
+  }
+}
+
+.screen-shell {
+  align-items: center;
   background: linear-gradient(
     to top,
     var(--color-background-deep) 0%,
     var(--color-background-orange) 52%,
     var(--light-orange) 100%
   );
-	background-attachment: fixed;
-	color: var(--color-text);
-	font-family: var(--font-family);
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  overflow: auto;
+  padding: 2rem 0;
 }
+
+.screen-shell > .hero-auth-container {
+  margin: 0 auto;
+}
+
+/* ==========================
+  AUTH SCREENS
+  Connected files:
+  - src/Auth_Components/Login.jsx
+  - src/Auth_Components/Register.jsx
+========================== */
 
 .hero-auth-container {
   align-items: center;
@@ -154,341 +201,249 @@ body {
 @media (max-width: 560px) {
   .hero-auth-container {
     margin: 1.5rem auto;
-    padding: 2rem 1.25rem;
+    padding: 1.75rem 1rem;
     width: min(94%, 440px);
+  }
+
+  .hero-auth-container h1 {
+    font-size: clamp(1.55rem, 8vw, 2rem);
+  }
+
+  .hero-auth-container p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .form-field input,
+  .auth-form button {
+    padding: 0.8rem;
   }
 }
 
-.blurt-material-input {
-  background: #fffdfb;
-  border: 1px solid var(--color-border);
-  border-radius: 10px;
-  box-sizing: border-box;
-  color: var(--color-text);
-  display: block;
-  font: inherit;
-  line-height: 1.6;
-  min-height: 16rem;
-  padding: 1rem;
-  resize: vertical;
-  width: 100%;
+/* ==========================
+   LOFI MUSIC BUTTON
+   Connected files:
+   - src/Audio/MusicButton.jsx
+   - src/Audio/LofiMusic.js
+========================== */
+
+/* Fixed to the top of every screen so the study music can be flipped on or off
+   from any page without pushing the full-bleed page backgrounds down. */
+.music-bar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.75rem 1rem 0;
+  pointer-events: none;
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 20;
 }
 
-.blurt-material-input:focus {
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(217, 87, 56, 0.16);
+/* A pill instead of the app's block buttons, so it never competes with the
+   page actions underneath it. */
+.music-toggle {
+  align-items: center;
+  backdrop-filter: blur(8px);
+  background: rgba(35, 35, 35, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: 999px;
+  box-shadow: 0 6px 16px rgba(45, 33, 28, 0.25);
+  color: var(--color-on-primary);
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  gap: 0.4rem;
+  padding: 0.45rem 0.9rem;
+  pointer-events: auto;
+  transition: background 200ms ease, border-color 200ms ease,
+    box-shadow 200ms ease, transform 200ms ease;
+}
+
+.music-toggle:hover {
+  background: rgba(35, 35, 35, 0.75);
+  transform: translateY(-1px);
+}
+
+.music-toggle:focus-visible {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.6);
   outline: none;
 }
 
-.notes-content {
-  white-space: pre-wrap;
+/* Playing: the warm gradient from the rest of the app marks the active state. */
+.music-toggle[aria-pressed="true"] {
+  background: linear-gradient(135deg, var(--color-primary), var(--light-orange));
+  border-color: rgba(255, 255, 255, 0.6);
 }
 
-.welcome-heading-card {
-    align-items: center;
-    box-sizing: border-box;
-    width: min(90%, 680px);
-    padding: 40px;
-    margin: 2.5rem auto;
-    justify-content: center;
-    background: var(--color-surface);
-    border-radius: 10px;
-    border: 2px solid var(--color-text);
+.music-toggle[aria-pressed="true"]:hover {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-dark),
+    var(--light-orange)
+  );
 }
 
-.welcome-heading-card h1,
-.welcome-heading-card h3 {
-  margin: 0;
-  text-align: center;
-}
-
-.welcome-heading-card h1 {
-  margin-bottom: 12px;
-}
-
-.welcome-hero p {
-  width: min(90%, 680px);
-  text-align: center;
-  margin: 24px auto 0;
-  background-color: var(--color-surface);
-  border-radius: 10px;
-  padding: 4px;
-  border: 2px solid var(--color-text);
-}
-
-.get-started {
-  width: min(90%, 680px);
-  margin: 24px auto 0;
-  text-align: center;
-}
-
-.get-started h3 {
-  margin: 0 0 16px;
-}
-
-.get-started-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-.get-started-buttons button {
-  min-width: 140px;
-  padding: 12px 24px;
-  border: 2px solid var(--color-text);
-  border-radius: 6px;
-  background-color: var(--color-primary);
-  color: var(--color-on-primary);
-  font: inherit;
-  cursor: pointer;
-}
-
-@media (max-width: 480px) {
-  .get-started-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .get-started-buttons button {
-    width: min(100%, 240px);
-  }
-}
-
-.accuracy-results {
-	margin-top: 2rem;
-	padding: 1.5rem;
-	border: 1px solid #d9e4df;
-	border-radius: 16px;
-	background: #f7fbf9;
-}
-
-.mastery-message {
-	margin: 0 0 1.25rem;
-	padding: 1rem 1.1rem;
-	border-left: 4px solid #2f8f68;
-	border-radius: 8px;
-	background: #e5f6ed;
-	color: #185b40;
-	font-weight: 700;
-}
-
-.accuracy-heading h2 {
-	margin-bottom: 0.35rem;
-}
-
-.accuracy-heading p {
-	margin-top: 0;
-	color: #557067;
-}
-
-.accuracy-list {
-	display: grid;
-	gap: 0.75rem;
-}
-
-.accuracy-item {
-	padding: 1rem;
-	border: 1px solid #edc18e;
-	border-radius: 12px;
-	background: #fffaf3;
-}
-
-.accuracy-status {
-	display: inline-block;
-	margin-bottom: 0.45rem;
-	color: #a26222;
-	font-size: 0.8rem;
-	font-weight: 800;
-	letter-spacing: 0.04em;
-	text-transform: uppercase;
-}
-
-.accuracy-item p {
-	margin: 0;
-	line-height: 1.55;
-}
-
-/* ==========================
-   DASHBOARD BACKGROUND
-========================== */
-
-.dashboard-container,
-.dashboard-features {
-  margin-inline: auto;
-  width: min(94%, 1100px);
-}
-
-.dashboard-container {
-  background:
-    linear-gradient(120deg, rgba(255, 255, 255, 0.94), rgba(255, 220, 184, 0.88)),
-    linear-gradient(35deg, #ffd9bd, #fff9f2);
-  border: 1px solid rgba(217, 87, 56, 0.2);
-  border-radius: 22px;
-  box-shadow: 0 20px 45px rgba(91, 54, 35, 0.12);
-  margin-top: 2.5rem;
-  padding: clamp(1.5rem, 4vw, 3rem);
-}
-
-.dashboard-container h1 {
-  margin: 0 0 0.65rem;
-}
-
-.dashboard-container h3 {
-  color: var(--color-muted);
-  margin: 0;
-}
-
-.score-progress {
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(217, 87, 56, 0.16);
-  border-radius: 12px;
-  margin-top: 1.5rem;
-  padding: 0.9rem 1rem;
-}
-
-.score-progress p {
-  margin: 0.25rem 0;
-}
-
-.score-progress progress {
-  accent-color: var(--color-primary);
-  height: 0.8rem;
-  width: 100%;
-}
-
-.dashboard-features {
-  padding: 1.5rem 0 3rem;
-}
-
-.dashboard-features > ul {
-  display: grid;
-  gap: 1.25rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  list-style: none;
-  margin: 0 0 1.5rem;
-  padding: 0;
-}
-
-.dashboard-features > ul > li {
-  background:
-    linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(255, 232, 209, 0.88)),
-    #fff;
-  border: 1px solid var(--color-border);
-  border-radius: 16px;
-  box-shadow: 0 12px 28px rgba(91, 54, 35, 0.09);
-  padding: 1.35rem;
-}
-
-.dashboard-buttons,
-.clynx-dashboard button {
-  background: linear-gradient(135deg, var(--color-primary), #ef8a45);
-  border: 0;
-  border-radius: 9px;
-  color: var(--color-on-primary);
-  cursor: pointer;
-  font: inherit;
-  font-weight: 700;
-  padding: 0.75rem 1rem;
-}
-
-.clynx-dashboard {
-  background:
-    linear-gradient(125deg, rgba(255, 255, 255, 0.97), rgba(255, 215, 186, 0.9)),
-    #fff;
-  border: 1px solid var(--color-border);
-  border-radius: 18px;
-  box-shadow: 0 16px 34px rgba(91, 54, 35, 0.1);
-  padding: 1.5rem;
-}
-
-.clynx-dashboard ol {
-  display: grid;
-  gap: 0.75rem;
-  padding-left: 1.5rem;
-}
-
-.clynx-dashboard li {
-  align-items: center;
-  background: rgba(255, 255, 255, 0.68);
-  border: 1px solid rgba(231, 216, 199, 0.9);
-  border-radius: 10px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  justify-content: space-between;
-  padding: 0.8rem;
-}
-
-/* ==========================
-   DIGITAL STUDY TIMER
-========================== */
-
-.dash-timer {
-  align-items: center;
-  background:
-    linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(255, 210, 179, 0.9)),
-    linear-gradient(35deg, #f3a76d, #fff8ed);
-  border: 1px solid rgba(217, 87, 56, 0.22);
-  border-radius: 24px;
-  box-shadow: 0 22px 55px rgba(91, 54, 35, 0.16);
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  margin: 4rem auto;
-  max-width: 720px;
-  padding: clamp(2rem, 7vw, 5rem);
-  text-align: center;
-  width: min(92%, 720px);
-}
-
-.dash-timer h1 {
-  margin: 0;
-}
-
-.dash-timer h3 {
-  background: #2d211c;
-  border: 8px solid rgba(255, 255, 255, 0.65);
-  border-radius: 16px;
-  box-shadow: inset 0 0 24px rgba(255, 159, 96, 0.18), 0 12px 25px rgba(45, 33, 28, 0.18);
-  color: #ffb36e;
-  font-family: "Courier New", monospace;
-  font-size: clamp(3.5rem, 13vw, 8rem);
-  letter-spacing: 0.08em;
+.music-note {
+  font-size: 1rem;
   line-height: 1;
-  margin: 0;
-  min-width: min(100%, 560px);
-  padding: 1.2rem 1rem;
-  text-shadow: 0 0 12px rgba(255, 159, 96, 0.75);
 }
 
-.dash-timer > div {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  justify-content: center;
+/* A slow pulse is the only motion that signals the music is playing. */
+.music-toggle[aria-pressed="true"] .music-note {
+  animation: music-note-pulse 1.6s ease-in-out infinite;
 }
 
-.dash-timer button {
-  background: linear-gradient(135deg, var(--color-primary), #ef8a45);
-  border: 0;
-  border-radius: 9px;
-  color: var(--color-on-primary);
-  cursor: pointer;
-  font: inherit;
-  font-weight: 700;
-  padding: 0.8rem 1.3rem;
-}
-
-@media (max-width: 620px) {
-  .dashboard-features > ul {
-    grid-template-columns: 1fr;
+@keyframes music-note-pulse {
+  0%,
+  100% {
+    transform: scale(1);
   }
 
-  .clynx-dashboard li {
-    align-items: flex-start;
-    flex-direction: column;
+  50% {
+    transform: scale(1.18);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .music-toggle,
+  .music-toggle:hover,
+  .music-toggle[aria-pressed="true"] .music-note {
+    animation: none;
+    transform: none;
+  }
+}
+
+
+
+
+
+
+/* ==========================
+   SHARED PAGE MOTION
+   Consumers:
+   - src/App.jsx (route cross-fade)
+   - every screen sheet uses page-rise-enter for its content blocks
+========================== */
+
+/* Screens slide sideways while they swap, so let the viewport clip that travel
+   instead of flashing a scrollbar. Declared on body so the value propagates to
+   the viewport and body itself stays a normal (non-scrolling) box. */
+body {
+  overflow-x: hidden;
+}
+
+/* The outgoing screen steps aside and fades, so the incoming screen has room. */
+@keyframes page-leave {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(var(--page-travel, 0), 0, 0) scale(0.985);
+  }
+}
+
+/* The incoming screen glides back to rest from wherever the direction implies. */
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(var(--page-arrive, 0), 0, 0) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+/* Content entrance shared by every screen: blocks rise into place, and each
+   page spreads them out with animation-delay so the screen reads top-to-bottom
+   as it arrives. */
+@keyframes page-rise-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 0.85rem, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Payoff moment: the countdown digits pulse while the alarm rings. */
+@keyframes timer-finished-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* ==========================
+   ROUTE TRANSITION
+   Connected file:
+   - src/App.jsx
+========================= */
+
+.page-transition {
+  /* Keep the whole screen on the compositor while it moves. */
+  backface-visibility: hidden;
+  min-height: 100vh;
+}
+
+/* Promote the layer only while a route is actually swapping, so the app is not
+   carrying a permanent compositing layer. */
+.page-transition.is-leaving,
+.page-transition.is-entering {
+  will-change: opacity, transform;
+}
+
+/* Diving deeper (dashboard -> contents -> session -> review): travel left. */
+.page-transition.is-leaving[data-direction="forward"] {
+  --page-travel: -1.5rem;
+  animation: page-leave 200ms cubic-bezier(0.4, 0, 1, 1) both;
+}
+
+.page-transition.is-entering[data-direction="forward"] {
+  --page-arrive: 2rem;
+  animation: page-enter 460ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Coming back out: mirror the motion so "back" feels like rewinding. */
+.page-transition.is-leaving[data-direction="backward"] {
+  --page-travel: 1.5rem;
+  animation: page-leave 200ms cubic-bezier(0.4, 0, 1, 1) both;
+}
+
+.page-transition.is-entering[data-direction="backward"] {
+  --page-arrive: -2rem;
+  animation: page-enter 460ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ==========================
+   AUTH SCREEN ENTRANCE
+   Connected files:
+   - src/Auth_Components/Login.jsx
+   - src/Auth_Components/Register.jsx
+========================= */
+
+.hero-auth-container {
+  animation: page-rise-enter 520ms 60ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* The route swap waits for this animation's end event, so it must keep
+     running — the duration is collapsed instead of the animation removed. */
+  .page-transition.is-leaving,
+  .page-transition.is-entering {
+    animation-duration: 1ms;
+  }
+
+  .hero-auth-container {
+    animation: none;
   }
 }

@@ -1,17 +1,20 @@
 import subjects from './SwiftMaterials/SwiftSubjects.json';
 import { useNavigate, useParams } from 'react-router-dom';
+import './Swift.css';
 
 export default function SwiftContents() {
 
   const navigate = useNavigate();
   const { userId } = useParams();
   const handleClick = (materialId) => {
+    // Preserve each subject's hint setting in the route so the quiz can offer
+    // support without changing the underlying question bank.
     const hintValue = subjects[materialId]['with-hint?'];
     navigate(`/dashboard/${userId}/swiftcontents/${materialId}?hint=${hintValue}`)
   };
 
   return (
-    <>
+    <div className="swift-page">
       <div className="swift-topics-hero">
         <h1>Swift Math</h1>
         <h3>Learn Math Interactively With Swift</h3>
@@ -24,6 +27,7 @@ export default function SwiftContents() {
             <button className="topic-card-button" onClick={() => handleClick(key)}>Learn This</button>
           </div>
         ))}
+        </section>
         <div className="swift-topic-coming-soon">
           <h2>Coming Soon</h2>
           <p>Building Swift require a lot of effort and time so these are all of the available
@@ -32,7 +36,6 @@ export default function SwiftContents() {
             for memorizing materials effectively so okay have fun learning.
           </p>
         </div>
-      </section>
-    </>
+    </div>
   )
 }

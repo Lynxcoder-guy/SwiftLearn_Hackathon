@@ -2,8 +2,14 @@ import { useEffect, useState } from "react";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../firebase";
+import "./Swift.css";
 
+// Keys cover the current display labels plus the older snake_case values that
+// may still be saved on existing user documents.
 const factorExplanations = {
+  "Multiplication Division": "Multiplication and division",
+  "Algebra Formulas": "Algebra formulas",
+  "Addition Subtraction": "Addition and subtraction",
   multiplication_division: "Multiplication and division",
   algebra_formulas: "Algebra formulas",
   addition_subtraction: "Addition and subtraction",
@@ -13,6 +19,8 @@ function getFactorExplanation(factor) {
   return factorExplanations[factor] ?? factor;
 }
 
+
+//Grade your result based on your score
 function getDisplayedGrade(score) {
   if (score === 100) return "A+";
   if (score >= 80) return "A";
@@ -32,6 +40,8 @@ export default function ReviewSwift() {
   const [needToBlurt, setNeedToBlurt] = useState([]);
 
   const [struggles] = useState(() => {
+    // Merge repeated errors by factor so the learner sees meaningful weakness
+    // categories instead of a separate card for every missed question.
     const reviewStruggles = state?.struggles ?? [];
     const mergedStruggles = new Map();
 
@@ -58,6 +68,7 @@ export default function ReviewSwift() {
       : "Congrats now do it without the hint";
 
   useEffect(() => {
+    //Fetching data from the Users database
     const fetchNeedToBlurt = async () => {
       try {
         const usersQuery = query(
@@ -80,40 +91,30 @@ export default function ReviewSwift() {
   }, [userId]);
 
   return (
-    <main>
-      <h1>Swift Review</h1>
-      <h3>Your score: {displayedGrade}</h3>
-      <p>
-        {achievementText}, now review and practice the topics shown below based
-        on what you need to improve.
-      </p>
-      {struggles.length > 0 && (
-        <section>
-          <h2>Struggles to review</h2>
-          <ul>
-            {struggles.map((struggle, index) => (
-              <li key={`${struggle.subExerciseNumber}-${index}`}>
-                {getFactorExplanation(struggle.factor)} in {struggle.topic}
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
-      {needToBlurt.length > 0 && (
-        <section>
-          <h2>Scope topics to review</h2>
-          <ul>
-            {needToBlurt.map((item, index) => (
-              <li key={`blurt-${item.concept ?? index}`}>
-                {typeof item === "object" ? item.concept ?? JSON.stringify(item) : item}
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
-      <button type="button" onClick={() => navigate(`/dashboard/${userId}`)}>
-        Back to dashboard
-      </button>
-    </main>
+    <div className="swift-page">
+      <main className="swift-review">
+        <h1>Swift Review</h1>
+        <h3>Your score: {displayedGrade}</h3>
+        <p>
+          {achievementText}, now review and practice the topics shown below based
+          on what you need to improve.
+        </p>
+        {struggles.length > 0 && (
+          <section className="swift-review-section">
+            <h2>Struggles to review</h2>
+            <ul>
+              {struggles.map((struggle, index) => (
+                <li key={`${struggle.subExerciseNumber}-${index}`}>
+                  {getFactorExplanation(struggle.factor)} in {struggle.topic}
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+        <button type="button" onClick={() => navigate(`/dashboard/${userId}`)}>
+          Back to dashboard
+        </button>
+      </main>
+    </div>
   );
 }

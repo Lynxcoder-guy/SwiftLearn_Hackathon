@@ -18,6 +18,7 @@ import {
   normalizeFactor,
 } from "./SwiftMaterials/QuizEngine";
 import { ScoreGamify } from "../JavaScript calculations/ScoreGamify";
+import "./Swift.css";
 
 function getStruggleKey(struggle) {
   return `${struggle.topic}-${struggle.subExerciseNumber}`;
@@ -50,7 +51,9 @@ export default function SwiftQuiz() {
   const [feedback, setFeedback] = useState("");
   const [answeredWrong, setAnsweredWrong] = useState({})
   const [score, setScore] = useState(100);
-  const [docId, setDocId] = useState(""); // ✅ useState untuk docId
+  // Store the Firestore profile ID separately from the Firebase Auth user ID;
+  // quiz results are written to the existing Users document.
+  const [docId, setDocId] = useState("");
   const [, setStruggles] = useState([]);
   const navigate = useNavigate();
   const strugglesRef = useRef([]);
@@ -63,7 +66,7 @@ export default function SwiftQuiz() {
   const hintValue = new URLSearchParams(search).get("hint");
   const showHints = hintValue === "true";
 
-  // ✅ ambil docId sekali di awal
+  // Resolve the learner's Firestore document once when the quiz opens.
   useEffect(() => {
     const fetchDocId = async () => {
       try {
@@ -74,7 +77,7 @@ export default function SwiftQuiz() {
         if (!querySnapshot.empty) {
           const foundDocId = querySnapshot.docs[0].id;
           console.log(`id collected ${foundDocId}`);
-          setDocId(foundDocId); // simpan ke state
+          setDocId(foundDocId);
         } else {
           console.warn("No profile found for userId:", userId);
         }
@@ -106,7 +109,8 @@ export default function SwiftQuiz() {
       }
       if (!answeredWrong[currentQuestionIndex]) {
         const nextScore = score - 20;
-        setScore((prev) => prev - 20); // kurangi score sekali saja
+        // Penalize each question at most once even if the learner retries it.
+        setScore((prev) => prev - 20);
         setAnsweredWrong((prev) => ({
           ...prev,
           [currentQuestionIndex]: true,
@@ -155,36 +159,40 @@ export default function SwiftQuiz() {
 
   if (!quizQuestions.length) {
     return (
-      <main className="quiz-hero">
-        <h1>Quiz unavailable</h1>
-        <p>This topic does not have quiz questions yet.</p>
-      </main>
+      <div className="swift-page">
+        <main className="quiz-hero">
+          <h1>Quiz unavailable</h1>
+          <p>This topic does not have quiz questions yet.</p>
+        </main>
+      </div>
     );
   }
 
   const currentQuestion = quizQuestions[currentQuestionIndex];
 
   return (
-    <main className="quiz-hero">
-      <h1>{subjects[materialId]?.title ?? materialId}</h1>
-      <p>
-        Question {currentQuestionIndex + 1} of {quizQuestions.length}
-      </p>
-      <p>Score: {score}</p>
-      <h2>{currentQuestion.question}</h2>
-      {showHints && <p>Hint: {currentQuestion.hint}</p>}
-      <div>
-        {currentQuestion.options.map((option) => (
-          <button
-            key={option.label}
-            type="button"
-            onClick={() => handleAnswer(option)}
-          >
-            {option.label}. {option.text}
-          </button>
-        ))}
-      </div>
-      {feedback && <p role="alert">{feedback}</p>}
-    </main>
+    <div className="swift-page">
+      <main className="quiz-hero">
+        <h1>{subjects[materialId]?.title ?? materialId}</h1>
+        <p>
+          Question {currentQuestionIndex + 1} of {quizQuestions.length}
+        </p>
+        <p>Score: {score}</p>
+        <h2>{currentQuestion.question}</h2>
+        {showHints && <p>Hint: {currentQuestion.hint}</p>}
+        <div>
+          {currentQuestion.options.map((option) => (
+            <button
+              key={option.label}
+              type="button"
+              onClick={() => handleAnswer(option)}
+            >
+              {option.label}. {option.text}
+            </button>
+          ))}
+        </div>
+        {feedback && <p role="alert">{feedback}</p>}
+      </main>
+    </div>
   );
 }

@@ -1,4 +1,5 @@
-// Helper untuk mengacak urutan array (Fisher-Yates Shuffle)
+// Fisher-Yates shuffle keeps answer order unpredictable without mutating the
+// source question-bank data.
 function shuffleArray(array) {
   const shuffled = [...array];
   for (let i = shuffled.length - 1; i > 0; i--) {
@@ -8,18 +9,28 @@ function shuffleArray(array) {
   return shuffled;
 }
 
+// Factors are stored in their display form ("Algebra Formulas") so the quiz
+// data, the Swift review screen and the dashboard checklist all read the same.
 export const QUIZ_FACTORS = {
-  MULTIPLICATION_DIVISION: "multiplication_division",
-  ALGEBRA_FORMULAS: "algebra_formulas",
-  ADDITION_SUBTRACTION: "addition_subtraction",
+  MULTIPLICATION_DIVISION: "Multiplication Division",
+  ALGEBRA_FORMULAS: "Algebra Formulas",
+  ADDITION_SUBTRACTION: "Addition Subtraction",
+};
+
+// Weaknesses saved before the labels were renamed still carry the old
+// snake_case keys, so translate them instead of dropping the factor.
+const LEGACY_FACTORS = {
+  multiplication_division: QUIZ_FACTORS.MULTIPLICATION_DIVISION,
+  algebra_formulas: QUIZ_FACTORS.ALGEBRA_FORMULAS,
+  addition_subtraction: QUIZ_FACTORS.ADDITION_SUBTRACTION,
 };
 
 const validFactors = new Set(Object.values(QUIZ_FACTORS));
 
 export function normalizeFactor(factor) {
-  return validFactors.has(factor)
-    ? factor
-    : QUIZ_FACTORS.ALGEBRA_FORMULAS;
+  if (validFactors.has(factor)) return factor;
+
+  return LEGACY_FACTORS[factor] ?? QUIZ_FACTORS.ALGEBRA_FORMULAS;
 }
 
 const factorsByTopic = {
@@ -84,22 +95,18 @@ export function findQuizSubject(jsonData, subjectId, subjectCatalog = {}) {
 }
 
 /**
- * Mengambil soal acak berdasarkan nama subjek dan nomor sub-exercise.
- * 
- * @param {Object} jsonData - Data JSON kamu
- * @param {string} subjectName - Contoh: "pre-algebra"
- * @param {number|string} subExerciseNum - Nomor sub-exercise (1 - 5)
+ * Select and format one randomized question from a subject's question bank.
+ * The formatter also normalizes the weakness factor used by Clynx.
  */
 export function getSubExerciseQuestion(jsonData, subjectName, subExerciseNum) {
   const subjectData = jsonData[subjectName];
   if (!subjectData) return null;
 
-  // 1. Pilih Exercise secara acak (exercise1, exercise2, dll)
+  // Select an exercise and problem independently so repeated sessions vary.
   const exerciseKeys = Object.keys(subjectData);
   const randomExerciseKey = exerciseKeys[Math.floor(Math.random() * exerciseKeys.length)];
   const selectedExercise = subjectData[randomExerciseKey];
 
-  // 2. Pilih Problem secara acak (problem1, problem2, dll)
   const problemKeys = Object.keys(selectedExercise);
   const randomProblemKey = problemKeys[Math.floor(Math.random() * problemKeys.length)];
   const selectedProblem = selectedExercise[randomProblemKey];
@@ -115,25 +122,25 @@ export function getSubExerciseQuestion(jsonData, subjectName, subExerciseNum) {
 
 function formatQuestion(subjectName, exerciseKey, problemKey, problem, subExerciseNum) {
 
-  // 3. Ambil data sub-exercise sesuai nomor yang diminta
+  // Read the requested sub-exercise from the selected problem.
   const subKey = `sub-exercise${subExerciseNum}`;
   const rawSubEx = problem[subKey];
   if (!rawSubEx) return null;
 
-  // Ambil teks pertanyaan (mendukung key "question1" atau "question")
+  // Support both the numbered and legacy question-key formats in the JSON.
   const questionText = rawSubEx[`question${subExerciseNum}`] || rawSubEx.question;
 
-  // 4. Kumpulkan TEPAT 3 OPSI JAWABAN (A, B, C)
+  // Convert the source answers into the stable option shape used by React.
   const rawOptions = [
     { text: rawSubEx.answerA, isCorrect: rawSubEx.correctAnswer === 'answerA' },
     { text: rawSubEx.answerB, isCorrect: rawSubEx.correctAnswer === 'answerB' },
     { text: rawSubEx.answerC, isCorrect: rawSubEx.correctAnswer === 'answerC' }
   ];
 
-  // 5. Acak posisi 3 opsi tersebut
+  // Shuffle answer positions so the correct answer is not predictable.
   const shuffledOptions = shuffleArray(rawOptions);
 
-  // 6. Return format siap pakai di React
+  // Return a UI-ready question with normalized metadata for review tracking.
   return {
     subject: subjectName,
     exerciseId: exerciseKey,
@@ -147,7 +154,7 @@ function formatQuestion(subjectName, exerciseKey, problemKey, problem, subExerci
     question: questionText,
     hint: rawSubEx.hint,
     options: shuffledOptions.map((opt, index) => ({
-      label: String.fromCharCode(65 + index), // "A", "B", atau "C"
+      label: String.fromCharCode(65 + index),
       text: opt.text,
       isCorrect: opt.isCorrect
     }))

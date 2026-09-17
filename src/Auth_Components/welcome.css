@@ -1,0 +1,194 @@
+.welcome-screen {
+  align-items: center;
+  background:
+    radial-gradient(circle at 12% 16%, rgba(255, 226, 174, 0.7), transparent 30%),
+    radial-gradient(circle at 88% 82%, rgba(255, 181, 128, 0.45), transparent 28%),
+    #fff7ed;
+  color: #2d211c;
+  display: flex;
+  gap: clamp(2rem, 7vw, 7rem);
+  justify-content: center;
+  min-height: 100vh;
+  overflow: hidden;
+  padding: clamp(3rem, 8vw, 7rem) clamp(1.25rem, 7vw, 7rem);
+  position: relative;
+}
+
+.welcome-screen::before {
+  border: 1px solid rgba(217, 87, 56, 0.12);
+  border-radius: 50%;
+  content: "";
+  height: min(48vw, 38rem);
+  position: absolute;
+  right: -10rem;
+  top: -13rem;
+  width: min(48vw, 38rem);
+}
+
+.welcome-hero,
+.get-started {
+  position: relative;
+  z-index: 1;
+}
+
+.welcome-hero {
+  max-width: 42rem;
+}
+
+.welcome-hero h1 {
+  font-size: clamp(2.8rem, 7vw, 6.25rem);
+  letter-spacing: -0.04em;
+  line-height: 0.98;
+  margin: 0;
+  max-width: 11ch;
+}
+
+.welcome-hero h1 strong {
+  color: #d95738;
+  display: block;
+}
+
+.welcome-kicker,
+.section-label {
+  color: #a34b32;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  margin: 1.75rem 0 0;
+  text-transform: uppercase;
+}
+
+.welcome-hero > p:last-child {
+  color: #735f55;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  line-height: 1.75;
+  margin: 0.8rem 0 0;
+  max-width: 37rem;
+}
+
+.welcome-hero > p:last-child strong {
+  color: #2d211c;
+}
+
+.get-started {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(217, 87, 56, 0.17);
+  border-radius: 1rem;
+  box-shadow: 0 1.5rem 4rem rgba(119, 67, 39, 0.12);
+  max-width: 24rem;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  width: 100%;
+}
+
+.get-started .section-label {
+  margin: 0;
+}
+
+.get-started h2 {
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  line-height: 1.15;
+  margin: 0.65rem 0 1.5rem;
+}
+
+.get-started-buttons {
+  display: grid;
+  gap: 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.get-started-buttons li,
+.get-started-buttons a,
+.get-started-buttons button {
+  width: 100%;
+}
+
+.get-started-buttons button {
+  background: #d95738;
+  border: 1px solid #d95738;
+  border-radius: 0.55rem;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 800;
+  padding: 0.85rem 1rem;
+  transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.get-started-buttons li:last-child button {
+  background: transparent;
+  color: #a83d2a;
+}
+
+.get-started-buttons button:hover,
+.get-started-buttons button:focus-visible {
+  background: #a83d2a;
+  border-color: #a83d2a;
+  color: #fff;
+  outline: none;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 760px) {
+  .welcome-screen {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 2.5rem;
+    justify-content: center;
+    min-height: 100svh;
+    overflow: auto;
+    padding: 3rem 1.25rem;
+  }
+
+  .welcome-hero h1 {
+    font-size: clamp(2.8rem, 15vw, 5rem);
+    max-width: 9ch;
+  }
+
+  .welcome-kicker,
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.09em;
+  }
+
+  .welcome-hero > p:last-child {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .get-started {
+    max-width: none;
+    padding: 1.35rem;
+  }
+}
+/* ==========================
+   WELCOME SCREEN ENTRANCE
+   Connected file:
+   - src/Auth_Components/Welcome.jsx
+========================= */
+
+/* The hero arrives first, the sign-up card follows, then its two actions. */
+.welcome-hero {
+  animation: page-rise-enter 560ms 40ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.get-started {
+  animation: page-rise-enter 560ms 160ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.get-started-buttons li:nth-child(1) {
+  animation: page-rise-enter 420ms 300ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.get-started-buttons li:nth-child(2) {
+  animation: page-rise-enter 420ms 370ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .welcome-hero,
+  .get-started,
+  .get-started-buttons li {
+    animation: none;
+  }
+}

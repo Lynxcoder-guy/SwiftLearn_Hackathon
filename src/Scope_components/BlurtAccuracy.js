@@ -3,7 +3,8 @@ import { pipeline } from "@huggingface/transformers";
 let extractorInstance = null;
 let extractorLoading = null;
 
-// Compare two embedding vectors and return a value from roughly -1 to 1.
+// Compare two embedding vectors. The resulting similarity score estimates how
+// closely the learner's recalled idea matches the original concept.
 function cosineSimilarity(vecA, vecB) {
   let dot = 0.0;
   let normA = 0.0;
@@ -39,7 +40,8 @@ export async function AccuracyBlurtML(masterNotes, rewriteBlurt, threshold = 0.6
     throw new Error("Both the original material and rewrite are required.");
   }
 
-  // Load one quantized browser model and reuse it on later checks.
+  // Load one quantized browser model and reuse it on later checks to avoid a
+  // costly model download for every accuracy request.
   if (!extractorInstance) {
     if (!extractorLoading) {
       console.log("[BlurtAccuracy] Loading quantized multilingual embedding model...");
@@ -53,7 +55,7 @@ export async function AccuracyBlurtML(masterNotes, rewriteBlurt, threshold = 0.6
     console.log("[BlurtAccuracy] Embedding model loaded");
   }
 
-  // Each sentence becomes one concept that can be marked covered or missing.
+  // Split both note sets into comparable concepts before generating embeddings.
   const concepts = Array.isArray(masterNotes)
     ? masterNotes.map(cleanConcept).filter((concept) => concept.length > 2)
     : splitIntoConcepts(masterNotes);
@@ -63,7 +65,8 @@ export async function AccuracyBlurtML(masterNotes, rewriteBlurt, threshold = 0.6
   console.log("[BlurtAccuracy] Concepts found:", concepts.length);
   console.log("[BlurtAccuracy] Recall parts found:", recallParts.length);
 
-  // Embed each recalled sentence so each concept can find its closest match.
+  // Embed recalled concepts once; every original concept can then compare
+  // against the complete set of learner responses.
   const recallEmbeddings = [];
   for (const part of recallParts) {
     recallEmbeddings.push(await extractorInstance(part, {
@@ -74,7 +77,8 @@ export async function AccuracyBlurtML(masterNotes, rewriteBlurt, threshold = 0.6
 
   const results = [];
 
-  // Compare every original concept with the learner's recalled material.
+  // Mark a concept as covered when its closest recalled meaning reaches the
+  // configured similarity threshold.
   for (const sentence of concepts) {
     const sentenceEmbedding = await extractorInstance(sentence, {
       pooling: "mean",

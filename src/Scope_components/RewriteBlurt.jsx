@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { collection, getDocs, query, setDoc, where } from "firebase/firestore";
 import { db } from "../firebase";
+import "./Scope.css";
 
 export default function BlurtRewrite() {
 	const [rewriteMaterials, setRewriteMaterials] = useState("");
@@ -12,6 +13,8 @@ export default function BlurtRewrite() {
 		event.preventDefault();
 
 		try {
+			// Save the learner's recall before navigating to the comparison screen;
+			// that screen needs both the original and rewritten materials.
 			const usersQuery = query(
 				collection(db, "Users"),
 				where("userId", "==", userId),
@@ -35,7 +38,8 @@ export default function BlurtRewrite() {
 	};
 
 	return (
-		<main>
+		<div className="scope-page">
+		<main className="blurt-rewrite-hero">
 			<h1>Rewrite what you remember</h1>
 			<p>Write the material again from memory, then compare it with your original notes.</p>
 			<form onSubmit={handleSubmit}>
@@ -49,5 +53,6 @@ export default function BlurtRewrite() {
 				<button type="submit">Review both notes</button>
 			</form>
 		</main>
+		</div>
 	);
 }

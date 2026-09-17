@@ -12,6 +12,8 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebase";
 import { getScoreRank, ScoreGamify } from "../JavaScript calculations/ScoreGamify";
+import { playAlarm, prepareAlarm, stopAlarm } from "../Audio/AlarmSound";
+import "./Dashboard.css";
 
 export default function DashTimer() {
     const { userId } = useParams();
@@ -25,6 +27,8 @@ export default function DashTimer() {
     const [notification, setNotification] = useState("");
 
     useEffect(() => {
+        // The interval is recreated only while the timer is active and is
+        // always cleaned up when the screen unmounts or reaches zero.
         if (!isRunning || seconds === 0) return undefined;
 
         const timer = window.setInterval(() => {
@@ -40,6 +44,20 @@ export default function DashTimer() {
 
         return () => window.clearInterval(timer);
     }, [isRunning, seconds]);
+
+    // Warm the alarm up while the learner studies so it can ring immediately.
+    useEffect(() => {
+        prepareAlarm();
+    }, []);
+
+    // Ring the alarm once the countdown finishes, and silence it on exit.
+    useEffect(() => {
+        if (seconds > 0) return undefined;
+
+        playAlarm();
+
+        return () => stopAlarm();
+    }, [seconds]);
 
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = String(seconds % 60).padStart(2, "0");
@@ -59,6 +77,8 @@ export default function DashTimer() {
         setIsCompleting(true);
 
         try {
+            // Completing a priority updates all related records together:
+            // remove the open item, award points, and preserve an audit key.
             const usersQuery = query(
                 collection(db, "Users"),
                 where("userId", "==", userId),
@@ -89,9 +109,9 @@ export default function DashTimer() {
             await ScoreGamify(nextScore, userDocument.id);
             setNotification(
                 `${priority.label} completed. +${priority.scoreReward} points added. Rank ${getScoreRank(nextScore)}.`,
-                
+
             );
-            navigate()
+            navigate(`/dashboard/${userId}`);
         } catch (error) {
             setNotification(`Could not complete priority: ${error.message}`);
         } finally {
@@ -100,21 +120,30 @@ export default function DashTimer() {
     };
 
     return (
-        <main className="dash-timer">
-            <h1>{priority.label}</h1>
-            <h3 aria-live="polite">
-                {minutes}:{remainingSeconds}
-            </h3>
-            <p>V: {priority.V} minutes | +{priority.scoreReward} points</p>
-            {notification && <p role="status">{notification}</p>}
-            <div>
-                <button type="button" onClick={() => navigate(`/dashboard/${userId}`)}>
-                    Back
-                </button>
-                <button type="button" onClick={completePriority} disabled={isCompleting}>
-                    {isCompleting ? "Saving..." : "Checklist it"}
-                </button>
-            </div>
-        </main>
+        <div className="dashboard-page-timer">
+            <main className="dash-timer">
+                <h1>
+                    {priority.label.length > 25
+                        ? priority.label.slice(0, 25) + "..."
+                        : priority.label}
+                </h1>
+                <h3
+                    className={seconds === 0 ? "is-finished" : undefined}
+                    aria-live="polite"
+                >
+                    {minutes}:{remainingSeconds}
+                </h3>
+                <p>Time {priority.V} minutes | +{priority.scoreReward} points</p>
+                {notification && <p role="status">{notification}</p>}
+                <div>
+                    <button type="button" onClick={() => navigate(`/dashboard/${userId}`)}>
+                        Back
+                    </button>
+                    <button type="button" onClick={completePriority} disabled={isCompleting}>
+                        {isCompleting ? "Saving..." : "Checklist it"}
+                    </button>
+                </div>
+            </main>
+        </div>
     );
 }

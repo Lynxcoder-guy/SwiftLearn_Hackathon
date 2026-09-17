@@ -11,6 +11,8 @@ export default function Register() {
   const navigate = useNavigate()
 
   async function handleSubmit(event) {
+    // Create the Firebase account first, then create the matching Firestore
+    // profile that stores learning progress and personalized priorities.
     event.preventDefault()
     setError('')
 
@@ -34,6 +36,8 @@ export default function Register() {
       await updateProfile(user, { displayName })
 
       await addDoc(collection(db, 'Users'), {
+        // Keep a predictable initial schema so every learning workflow can
+        // safely append data without special-case initialization.
         userId,
         userName: displayName,
         score: 0,
@@ -53,8 +57,8 @@ export default function Register() {
   }
 
   return (
-    <>
-    <main className="hero-auth-container">
+    <div className="screen-shell">
+      <main className="hero-auth-container">
       <h1>Create your SwiftScope account</h1>
       <p>Register to save your learning progress and build better study habits.</p>
 
@@ -121,7 +125,7 @@ export default function Register() {
       <p>
         Already have an account? <Link to="/login">Log in</Link>
       </p>
-    </main>
-    </>
+      </main>
+    </div>
   )
 }

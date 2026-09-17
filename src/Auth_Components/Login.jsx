@@ -9,6 +9,8 @@ export default function Login() {
   const navigate = useNavigate()
 
   async function handleSubmit(event) {
+    // Firebase owns credential validation; this screen only manages form state
+    // and routes an authenticated learner to their private dashboard.
     event.preventDefault()
     setError('')
     setIsSubmitting(true)
@@ -22,7 +24,6 @@ export default function Login() {
       const user = userCredential.user
       const userId = user.uid
 
-      // redirect ke dashboard dengan userId
       navigate(`/dashboard/${userId}`)
     } catch (firebaseError) {
       setError(firebaseError.message || 'Unable to log in. Please try again.')
@@ -31,7 +32,8 @@ export default function Login() {
   }
 
   return (
-    <main className="hero-auth-container">
+    <div className="screen-shell">
+      <main className="hero-auth-container">
       <h1>Log in to your account</h1>
       <p>Welcome back to SwiftScope. Enter your details to continue learning.</p>
 
@@ -70,6 +72,7 @@ export default function Login() {
       <p>
         Do not have an account? <Link to="/register">Create one</Link>
       </p>
-    </main>
+      </main>
+    </div>
   )
 }

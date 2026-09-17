@@ -11,6 +11,7 @@ import {
 } from "firebase/firestore"
 import { db } from "../firebase"
 import { AccuracyBlurtML } from "./BlurtAccuracy.js"
+import "./Scope.css"
 
 export default function ReviewBlurt() {
     const { userId } = useParams()
@@ -23,7 +24,8 @@ export default function ReviewBlurt() {
     const [hasCheckedAccuracy, setHasCheckedAccuracy] = useState(false)
     const navigate = useNavigate()
 
-    // Start the local model comparison when the learner clicks the accuracy button.
+    // Run semantic comparison locally in the browser so the learner's notes are
+    // not sent to a separate scoring service.
     const handleAccuracyCheck = async () => {
         console.log("[ReviewBlurt] Accuracy check requested")
         setIsCheckingAccuracy(true)
@@ -86,7 +88,8 @@ export default function ReviewBlurt() {
         setNeedToBlurt((currentItems) => currentItems.filter((_, itemIndex) => itemIndex !== index))
     }
 
-    // Delete the temporary Scope notes before returning to the dashboard.
+    // Remove temporary session notes while preserving the learner's missed
+    // concepts as future dashboard priorities.
     const handleClick = async () => {
         console.log("[ReviewBlurt] Clearing Scope notes for user:", userId)
         try {
@@ -114,7 +117,8 @@ export default function ReviewBlurt() {
         }
     }
 
-    // Load the original material and the learner's rewrite from Firestore.
+    // Restore the active Scope session so a refresh does not lose its review
+    // context or previously recorded concepts.
     useEffect(() => {
         const loadNotes = async () => {
             console.log("[ReviewBlurt] Loading notes for user:", userId)
@@ -150,19 +154,18 @@ export default function ReviewBlurt() {
     }, [userId])
 
     return (
-        <>
+        <div className="scope-page">
         <main className="blurt-review-hero">
             <h1>Compare your notes</h1>
             <p>Compare the materials youre trying to learn with the one you remember to know how good your 
                 understanding of the materials are then do it again to get a better understanding of the materials</p>
-        </main>
             <section className="blurt-original-materials">
                 <h2>Original material</h2>
                 <p className="notes-content">{notes.blurtMaterials || "No original material found."}</p>
             </section>
-            <section className="blurt-rewrited-materials">
+            <section className="blurt-rewrite-review">
                 <h2>What you remembered</h2>
-                <p className="notes-content">{notes.rewriteMaterials || "No rewrite found."}</p>
+                <p className="notes-content">{notes.rewriteMaterials || "-"}</p>
                 <button onClick={handleAccuracyCheck} disabled={isCheckingAccuracy || !notes.blurtMaterials || !notes.rewriteMaterials}>
                     {isCheckingAccuracy ? "Checking accuracy..." : "Check blurting accuracy"}
                 </button>
@@ -194,6 +197,7 @@ export default function ReviewBlurt() {
                         </div>}
                     </section>
                 )}
+            </section>
             <section className="blurt-listings">
 				<h3>List the parts you missed here</h3>
                 <form onSubmit={handleNeedToBlurt}>
@@ -211,7 +215,9 @@ export default function ReviewBlurt() {
                     <ul>
                         {needToBlurt.map((item, index) => (
                             <li key={`${item.concept}-${index}`}>
-                                <span>{item.concept}</span>
+                                <span> {item.concept.length > 25
+                                        ? item.concept.slice(0, 25) + "..."
+                                        : item.concept}</span>
                                 <span>Under value: {item.underValue}</span>
                                 <button
                                     type="button"
@@ -240,8 +246,10 @@ export default function ReviewBlurt() {
                     </ul>
                 )}
 			</section>
-                <button className="blurt-dashboard" onClick={handleClick}>Clear Materials and Return</button>
+            <section className="clear-button">
+                <button className="blurt-dashboard-button" onClick={handleClick}>Clear Materials and Return</button>
             </section>
-        </>
+            </main>
+        </div>
     )
 }

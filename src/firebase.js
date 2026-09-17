@@ -1,11 +1,10 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Firebase is the shared backend for authentication and learner progress.
+// The client SDK is initialized once and the exported services are reused by
+// every feature instead of creating separate connections per screen.
 const firebaseConfig = {
   apiKey: "AIzaSyDYOPcQgEAT4P_ir0imfcrJU_K7j1LfNNw",
   authDomain: "swiftscope-hackathon.firebaseapp.com",
@@ -16,7 +15,6 @@ const firebaseConfig = {
   measurementId: "G-YRMHZYR2QW"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);

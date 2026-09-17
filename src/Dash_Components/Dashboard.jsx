@@ -11,9 +11,13 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { ClynxCalculations } from "../JavaScript calculations/Clynx";
+import { ClynxCalculationsBlurt } from "../JavaScript calculations/ClynxBlurt";
 import { ScoreGamify } from "../JavaScript calculations/ScoreGamify";
+import "./Dashboard.css";
 
 function getScoreProgress(score) {
+  // Convert the learner's score into progress between the next achievement
+  // milestones shown on the dashboard.
   const goals = [100, 200, 400];
   if (score >= 400) {
     return { nextGoal: 400, progress: 100 };
@@ -42,8 +46,29 @@ export default function Dashboard() {
   const { userId } = useParams();
   const navigate = useNavigate();
   const scoreProgress = getScoreProgress(score);
+    const Quotes = [
+    "\"Education is the most powerful weapon which you can use to change the world.\" – Nelson Mandela",
+    "\"The more that you read, the more things you will know. The more that you learn, the more places you’ll go.\" – Dr. Seuss",
+    "\"Live as if you were to die tomorrow. Learn as if you were to live forever.\" – Mahatma Gandhi",
+    "\"An investment in knowledge pays the best interest.\" – Benjamin Franklin",
+    "\"The beautiful thing about learning is that nobody can take it away from you.\" – B.B. King",
+    "\"Tell me and I forget. Teach me and I remember. Involve me and I learn.\" – Benjamin Franklin",
+    "\"Wisdom is not a product of schooling but of the lifelong attempt to acquire it.\" – Albert Einstein",
+    "\"Learning never exhausts the mind.\" – Leonardo da Vinci",
+    "\"Develop a passion for learning. If you do, you will never cease to grow.\" – Anthony J. D’Angelo",
+    "\"The expert in anything was once a beginner.\" – Helen Hayes"
+  ];
 
-  // Pastikan route selalu dimulai dengan slash
+  // A fresh quote is selected when the dashboard mounts without updating state
+  // during render, which keeps React's render cycle stable.
+  const getRandomQuote = () => {
+    const randomIndex = Math.floor(Math.random() * Quotes.length);
+    return Quotes[randomIndex];
+  };
+  const [quote] = useState(getRandomQuote);
+
+  // Normalize feature paths so buttons can pass either "scopecontents" or
+  // "/scopecontents" without producing malformed dashboard URLs.
   const handleClick = useCallback(
     (route) => {
       const normalizedRoute = route?.startsWith("/") ? route : `/${route}`;
@@ -58,6 +83,8 @@ export default function Dashboard() {
     let mounted = true;
     const fetchClynxInfo = async (userDocumentId) => {
       try {
+        // Rebuild priorities from the latest learning data, then preserve only
+        // completion metadata from the previously saved dashboard list.
         const userSnapshot = await getDoc(doc(db, "Users", userDocumentId));
         if (!mounted) return;
 
@@ -110,7 +137,7 @@ export default function Dashboard() {
               ),
             );
             const underValue = Math.max(1, Number(item.underValue ?? 1));
-            const calculation = ClynxCalculations(
+            const calculation = ClynxCalculationsBlurt(
               underValue,
               timeNeed,
               NEED_TO_BLURT_AW,
@@ -196,12 +223,13 @@ export default function Dashboard() {
 
   return (
     <>
+    <div className="dashboard-page">
       <div className="dashboard-container">
         <h1>
           {loading ? "Loading..." : `Welcome back ${displayName || "Guest"}`}
           <span> | Rank {rank} | Score {score}</span>
         </h1>
-        <h3>Make your study session count today</h3>
+        <h3>{quote}</h3>
         <div className="score-progress" aria-label="Score progress">
           <p>
             Score goal: {score} / {scoreProgress.nextGoal}
@@ -221,7 +249,7 @@ export default function Dashboard() {
             <h3>Swift</h3>
             <p>
               Learn our available materials with <strong>Swift</strong> for more
-              interactive learning and use our mistake analisys and review
+              interactive learning and use our <strong>Weakness Analisys</strong> and review
               system for more efficient lerning process.
             </p>
             <button
@@ -237,7 +265,8 @@ export default function Dashboard() {
             <h3>Scope</h3>
             <p>
               Memorize materials with our <strong>Scope</strong>’s blurting study
-              method...
+              method also equiped with <strong>Missed Points Analisys</strong> to help
+              you find mistake in your material review for more efficient memorizing.
             </p>
             <button
               className="dashboard-buttons"
@@ -258,8 +287,12 @@ export default function Dashboard() {
             <ol>
               {clynxlist.map((priority) => (
                 <li key={priority.checklistKey}>
-                  <strong>{priority.label}</strong>
-                  <span>V: {priority.V} minutes</span>
+                  <strong>
+                      {priority.label.length > 25
+                      ? priority.label.slice(0, 25) + "..."
+                        : priority.label}
+                  </strong>
+                  <span>Study Time Estimation {priority.V} minutes</span>
                   <button
                     type="button"
                     onClick={() => navigate(`/dashboard/${userId}/dashtimer`, {
@@ -280,6 +313,7 @@ export default function Dashboard() {
           </p>
         </section>
       </div>
+    </div>
     </>
   );
 }
