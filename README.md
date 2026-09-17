@@ -112,4 +112,4 @@ Contributions are welcome.
 3. Open a pull request describing what changed and why
 ## License
  
-[MIT](LICENSE) © Your Name
+Licensed under the Apache License.
