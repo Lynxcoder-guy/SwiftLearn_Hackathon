@@ -76,17 +76,73 @@ Open http://localhost:5173 in your browser.
 ## Project structure
  
 ```
-swiftlearn/
-├── src/
-│   ├── components/     # React components
-│   ├── pages/          # Page views
-│   ├── features/
-│   │   ├── swift/
-│   │   ├── scope/
-│   │   └── clynx/
-│   └── firebase/       # Firebase config and helpers
-├── public/
-└── assets/
+Hackathon_1/                     # package name: "swiftlearn"
+├── .env.local.example
+├── .gitignore
+├── eslint.config.js
+├── index.html                   # Vite entry (mounts /src/main.jsx, SwiftLearn favicon)
+├── vite.config.js
+├── package.json
+├── package-lock.json
+├── LICENSE
+├── README.md
+├── dev_err.txt                  # dev-server logs (working files)
+├── dev_log.txt
+├── dev_out.txt
+├── desktop.ini
+├── public/                      # static assets served at /
+│   ├── favicon.svg
+│   └── icons.svg
+├── dist/                        # build output (vite build)
+│   ├── index.html
+│   ├── favicon.svg
+│   ├── icons.svg
+│   └── assets/
+└── src/
+    ├── main.jsx                 # React entry / createRoot
+    ├── App.jsx                  # Router + all route definitions
+    ├── App.css                  # global + page-transition styles
+    ├── index.css                # base/global styles
+    ├── firebase.js              # Firebase config and helpers
+    ├── todo                     # notes file (no extension)
+    ├── assets/                  # app images/logos
+    │   └── SwiftLearn Favicon.svg
+    ├── Audio/                   # sound + music feature
+    │   ├── Alarm.mp3
+    │   ├── AlarmSound.js
+    │   ├── Lofi1.mp3
+    │   ├── LofiMusic.js
+    │   └── MusicButton.jsx
+    ├── Auth_Components/         # page views: onboarding / auth
+    │   ├── Welcome.jsx
+    │   ├── Login.jsx
+    │   ├── Register.jsx
+    │   └── welcome.css
+    ├── Dash_Components/         # page views: dashboard
+    │   ├── Dashboard.jsx
+    │   ├── Dashboard.css
+    │   └── DashTimer.jsx
+    ├── JavaScript calculations/ # pure logic (note: real folder has a space)
+    │   ├── Clynx.js
+    │   ├── ClynxBlurt.js
+    │   └── ScoreGamify.js
+    ├── Scope_components/        # feature: Scope (blurting / revision method)
+    │   ├── BlurtCon.jsx
+    │   ├── Timer.jsx
+    │   ├── RewriteBlurt.jsx
+    │   ├── ReviewBlurt.jsx
+    │   ├── BlurtAccuracy.js
+    │   └── Scope.css
+    └── Swift_components/        # feature: Swift (quiz method)
+        ├── SwiftCon.jsx
+        ├── SwiftQuiz.jsx
+        ├── ReviewSwift.jsx
+        ├── Swift.css
+        └── SwiftMaterials/      # content/data + engine
+            ├── SwiftSubjects.json
+            ├── MathQuiz.json
+            └── QuizEngine.js
+
 ```
  
 *(Adjust this to match your actual folder layout.)*
