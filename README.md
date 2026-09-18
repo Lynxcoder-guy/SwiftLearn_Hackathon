@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="assets/logo.png" alt="SwiftLearn logo" width="140">
-</p>
+<img src="assets/logo.png" alt="SwiftLearn logo" width="140">
 <h1 align="center">SwiftLearn</h1>
  
 <p align="center">
