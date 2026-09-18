@@ -21,7 +21,7 @@ core tools that work together to help you study smarter, not longer.
 | Feature | What it does |
 |---------|--------------|
 | **SWIFT** | The core learning tool — helps students approach and work through subjects effectively with step by step guidence and weakness tracking|
-| **SCOPE** | An AI model that helps you memorize subject material |
+| **SCOPE** | An AI model that helps you memorize subject material (note: the AI model is not using ANY LLM, instead using JavaScript NLP/ML library @huggingface/transformers |
 | **CLYNX** | A formula that ranks and estimates how much study time you need per problems |
  
 ## Advantages
