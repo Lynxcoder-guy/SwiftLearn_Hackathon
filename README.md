@@ -4,7 +4,7 @@
   <em>Learn and take quizzes effectively — completely free, no paid subscription.</em>
 </p>
 <p align="center">
-  <a href="LICENSE"><img src="https://img.shields.io/github/license/USER/swiftlearn" alt="License"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/USER/Swiftlearn_Hackathon" alt="License"></a>
   <a href="https://swiftlearn.example.com"><img src="https://img.shields.io/badge/demo-live-brightgreen" alt="Live demo"></a>
 </p>
 ---
