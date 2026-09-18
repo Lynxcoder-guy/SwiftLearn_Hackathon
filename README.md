@@ -5,7 +5,7 @@
 </p>
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/github/license/USER/Swiftlearn_Hackathon" alt="License"></a>
-  <a href="https://https://swiftlearn-hackathon.shalbia549.workers.dev/><img src="https://img.shields.io/badge/demo-live-brightgreen" alt="Live demo"></a>
+  <a href="https://swiftlearn-hackathon.shalbia549.workers.dev/><img src="https://img.shields.io/badge/demo-live-brightgreen" alt="Live demo"></a>
 </p>
 ---
  
