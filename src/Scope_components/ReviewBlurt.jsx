@@ -163,7 +163,7 @@ export default function ReviewBlurt() {
                 <h2>Original material</h2>
                 <p className="notes-content">{notes.blurtMaterials || "No original material found."}</p>
             </section>
-            <section className="blurt-rewrite-review">
+			{/* <section className="blurt-rewrite-review"> 
                 <h2>What you remembered</h2>
                 <p className="notes-content">{notes.rewriteMaterials || "-"}</p>
                 <button onClick={handleAccuracyCheck} disabled={isCheckingAccuracy || !notes.blurtMaterials || !notes.rewriteMaterials}>
@@ -196,6 +196,8 @@ export default function ReviewBlurt() {
                             })}
                         </div>}
                     </section>
+			*/}
+			
                 )}
             </section>
             <section className="blurt-listings">
