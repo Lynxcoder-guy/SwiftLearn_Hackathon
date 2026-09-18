@@ -59,7 +59,7 @@ export default function Register() {
   return (
     <div className="screen-shell">
       <main className="hero-auth-container">
-      <h1>Create your SwiftScope account</h1>
+      <h1>Create your SwiftLearn account</h1>
       <p>Register to save your learning progress and build better study habits.</p>
 
       <form className="auth-form" onSubmit={handleSubmit}>
