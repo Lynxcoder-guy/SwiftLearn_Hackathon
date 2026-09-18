@@ -1,4 +1,7 @@
-import { pipeline } from "@huggingface/transformers";
+import { pipeline, env } from "@huggingface/transformers";
+
+env.allowModels = false;
+env.allowRemoteModels = true;
 
 let extractorInstance = null;
 let extractorLoading = null;
