@@ -100,7 +100,7 @@ swiftlearn/
 - [x] SWIFT learning tool
 - [x] SCOPE memorization AI
 - [x] CLYNX study-time ranking
-- [ ] Mobile app
+- [x] Mobile app
 - [ ] Leaderboards
 - [ ] Offline quiz mode
 ## Contributing
@@ -113,3 +113,7 @@ Contributions are welcome.
 ## License
  
 Licensed under the Apache License.
+
+## Bugs
+Blurt Accuracy cant spot small inaccuracy and only analyze one paragraphs.
+
