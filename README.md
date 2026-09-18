@@ -168,4 +168,5 @@ Licensed under the Apache License 2.0.
 
 ## Bugs
 Blurt Accuracy cant spot small inaccuracy and only analyze one paragraphs.
+BlurtAccuracy.js cant work during publishing and still can only work on localhost.
 
