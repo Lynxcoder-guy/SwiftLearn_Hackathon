@@ -112,7 +112,7 @@ Contributions are welcome.
 3. Open a pull request describing what changed and why
 ## License
  
-Licensed under the Apache License.
+Licensed under the Apache License 2.0.
 
 ## Bugs
 Blurt Accuracy cant spot small inaccuracy and only analyze one paragraphs.
