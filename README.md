@@ -15,7 +15,7 @@ SwiftLearn is an educational website that helps students learn subjects and
 test themselves through quizzes, without any paywall. It's built around three
 core tools that work together to help you study smarter, not longer.
  
-**[Live demo →](https://swiftlearn.example.com)**
+**[Live demo →](https://swiftlearn-hackathon.shalbia549.workers.dev/)**
  
 ## Features
  
